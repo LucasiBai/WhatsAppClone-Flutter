@@ -15,10 +15,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: "WhatsApp Clone",
       theme: ThemeData(
-        primaryColor: const Color(0xff075E54),
-        secondaryHeaderColor: const Color(0xff25D366),
+        colorScheme: ColorScheme.fromSeed(seedColor:  Color(0xff00a884), secondary: Color(0xff25D366))
       ),
-      home: AppRouter(),
+      home: const AppRouter(),
     );
   }
 }
