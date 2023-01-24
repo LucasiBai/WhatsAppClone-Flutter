@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'package:whatsapp_clone/views/calls.dart';
-import 'package:whatsapp_clone/views/chats.dart';
-import 'package:whatsapp_clone/views/status.dart';
-import 'package:whatsapp_clone/views/community.dart';
+import 'package:whatsapp_clone/views/calls_page/calls_page.dart';
+import 'package:whatsapp_clone/views/chats_page/chats_page.dart';
+import 'package:whatsapp_clone/views/status_page/status_page.dart';
+import 'package:whatsapp_clone/views/community_page.dart';
+import 'package:whatsapp_clone/views/camera_page/camera_page.dart';
 
 class AppRouter extends StatefulWidget {
   const AppRouter({Key? key}) : super(key: key);
@@ -25,7 +26,10 @@ class _AppRouterState extends State<AppRouter>
           title: const Text("WhatsApp"),
           actions: [
             IconButton(
-                onPressed: () {}, icon: const Icon(Icons.camera_alt_outlined)),
+                onPressed: () {
+                  Navigator.pushNamed(context, "/camera");
+                },
+                icon: const Icon(Icons.camera_alt_outlined)),
             IconButton(onPressed: () {}, icon: const Icon(Icons.search)),
             IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert)),
           ],
@@ -33,12 +37,7 @@ class _AppRouterState extends State<AppRouter>
           bottom: buildNavBar(),
         ),
         body: const TabBarView(
-          children: [
-              Community(),
-              Chats(),
-              Status(),
-              Calls()
-          ],
+          children: [CommunityPage(), ChatsPage(), StatusPage(), CallsPage()],
         ),
       ),
     );
@@ -46,6 +45,7 @@ class _AppRouterState extends State<AppRouter>
 
   TabBar buildNavBar() {
     return const TabBar(
+      labelPadding: EdgeInsets.all(0),
       tabs: [
         Tab(
           icon: Icon(Icons.people),
