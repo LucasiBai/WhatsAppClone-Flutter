@@ -1,15 +1,44 @@
 import 'package:flutter/material.dart';
+import 'package:whatsapp_clone/services/data_service.dart';
 import 'package:whatsapp_clone/views/chats_page/chat_card.dart';
 
-class ChatsPage extends StatelessWidget {
+class ChatsPage extends StatefulWidget {
   const ChatsPage({Key? key}) : super(key: key);
 
   @override
+  State<ChatsPage> createState() => _ChatsPageState();
+
+}
+
+class _ChatsPageState extends State<ChatsPage> {
+  List _chatData = [];
+
+  void _getChatsData() async{
+    final data = await getData();
+
+    setState(() {
+      _chatData = data;
+    });
+  }
+  
+  @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: [
-        ChatCard(contact: 'Javi ENP', time: '13:50', imageUrl: 'https://images.unsplash.com/photo-1616588945355-bb09c77baf29?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80', message: 'Hola, cómo va?',),
-      ],
-    );
+    _getChatsData();
+    return ListView(children: _getChats(_chatData));
+  }
+
+  List<ChatCard> _getChats(List chatData) {
+    List<ChatCard> chatList = [];
+
+    for (final chat in chatData) {
+      chatList.add(ChatCard(
+          contact: chat["contact"],
+          time: chat["time"],
+          imageUrl: chat["imageUrl"],
+          message: chat["message"]));
+    }
+
+    return chatList;
   }
 }
+
