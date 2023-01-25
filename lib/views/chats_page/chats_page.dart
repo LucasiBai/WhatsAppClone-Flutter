@@ -32,6 +32,7 @@ class _ChatsPageState extends State<ChatsPage> {
 
     for (final chat in chatData) {
       chatList.add(ChatCard(
+          chatId: chat["id"],
           contact: chat["contact"],
           time: chat["time"],
           imageUrl: chat["imageUrl"],
