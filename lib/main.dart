@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:whatsapp_clone/routing/app_router.dart';
+
 import 'package:whatsapp_clone/routing/app_routes.dart';
 
-void main(){
-  runApp(
-    const MyApp()
-  );
+void main() {
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -13,13 +11,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: "WhatsApp Clone",
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor:  Color(0xff00a884), secondary: Color(0xff25D366))
-      ),
-      routes: Routes.config,
-      home: const AppRouter(),
+          colorScheme: ColorScheme.fromSeed(
+              seedColor: Color(0xff00a884), secondary: Color(0xff25D366))),
+      routerConfig: Routes.config,
     );
   }
 }
