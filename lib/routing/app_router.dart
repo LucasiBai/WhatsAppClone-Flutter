@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
+import 'package:whatsapp_clone/services/routing_service.dart';
+
 import 'package:whatsapp_clone/views/calls_page/calls_page.dart';
 import 'package:whatsapp_clone/views/chats_page/chats_page.dart';
 import 'package:whatsapp_clone/views/status_page/status_page.dart';
 import 'package:whatsapp_clone/views/community_page.dart';
-import 'package:whatsapp_clone/views/camera_page/camera_page.dart';
 
 class AppRouter extends StatefulWidget {
   const AppRouter({Key? key}) : super(key: key);
@@ -27,7 +28,7 @@ class _AppRouterState extends State<AppRouter>
           actions: [
             IconButton(
                 onPressed: () {
-                  Navigator.pushNamed(context, "/camera");
+                  goToRoute(context, "/camera");
                 },
                 icon: const Icon(Icons.camera_alt_outlined)),
             IconButton(onPressed: () {}, icon: const Icon(Icons.search)),

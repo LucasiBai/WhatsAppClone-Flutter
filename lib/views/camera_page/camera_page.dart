@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:whatsapp_clone/services/routing_service.dart';
+
 class Camera extends StatelessWidget {
   const Camera({Key? key}) : super(key: key);
 
@@ -15,7 +17,7 @@ class Camera extends StatelessWidget {
                 children: [
                   IconButton(
                     onPressed: (){
-                      Navigator.pop(context);
+                      goBack(context);
                     },
                     icon: const Icon(Icons.close , color: Colors.white,),
                   ),
