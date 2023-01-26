@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:whatsapp_clone/services/data_service.dart';
-import 'package:whatsapp_clone/views/chats_page/chat_card.dart';
+import 'package:whatsapp_clone/src/services/data_service.dart';
+import 'package:whatsapp_clone/src/views/chats_page/chat_card.dart';
 
 class ChatsPage extends StatefulWidget {
   const ChatsPage({Key? key}) : super(key: key);
@@ -36,7 +36,8 @@ class _ChatsPageState extends State<ChatsPage> {
           contact: chat["contact"],
           time: chat["time"],
           imageUrl: chat["imageUrl"],
-          message: chat["message"]));
+          author: chat["message"]["author"],
+          message: chat["message"]["content"]));
     }
 
     return chatList;

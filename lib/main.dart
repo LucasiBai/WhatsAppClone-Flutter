@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_web_plugins/url_strategy.dart';
 
-import 'package:whatsapp_clone/routing/app_routes.dart';
+import 'package:whatsapp_clone/src/routing/app_routes.dart';
 
 void main() {
+  usePathUrlStrategy();
   runApp(const MyApp());
 }
 
@@ -20,3 +22,4 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+

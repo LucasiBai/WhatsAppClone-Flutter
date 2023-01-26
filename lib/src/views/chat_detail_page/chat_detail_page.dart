@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:whatsapp_clone/services/data_service.dart';
-import 'package:whatsapp_clone/services/routing_service.dart';
+import 'package:whatsapp_clone/src/services/data_service.dart';
+import 'package:whatsapp_clone/src/views/chat_detail_page/exit_chat_button.dart';
 
 class ChatDetail extends StatefulWidget {
   const ChatDetail({
@@ -17,7 +17,8 @@ class ChatDetail extends StatefulWidget {
 
 class _ChatDetailState extends State<ChatDetail> {
   String _contact = "";
-  String _contactImg = "https://www.debate.com.mx/__export/1494286433102/sites/debate/img/2017/05/08/4b463f287cd814216b7e7b2e52e82687.png_2120446623.png";
+  String _contactImg =
+      "https://www.debate.com.mx/__export/1494286433102/sites/debate/img/2017/05/08/4b463f287cd814216b7e7b2e52e82687.png_2120446623.png";
 
   void _getData() async {
     final data = await getDetailData(int.parse(widget.chatId));
@@ -37,19 +38,8 @@ class _ChatDetailState extends State<ChatDetail> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: GestureDetector(
-          onTap: (){
-            goBack(context);
-          },
-          child: Row(
-            children: [
-              const Icon(Icons.arrow_back, color: Colors.white,),
-              CircleAvatar(
-                backgroundImage: NetworkImage(_contactImg),
-                radius: 16,
-              )
-            ],
-          ),
+        leading: ExitChatButton(
+          contactImg: _contactImg,
         ),
         backgroundColor: Theme.of(context).colorScheme.primary,
         title: Text(_contact),

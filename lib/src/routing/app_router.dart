@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-import 'package:whatsapp_clone/services/routing_service.dart';
+import 'package:whatsapp_clone/src/services/routing_service.dart';
 
-import 'package:whatsapp_clone/views/calls_page/calls_page.dart';
-import 'package:whatsapp_clone/views/chats_page/chats_page.dart';
-import 'package:whatsapp_clone/views/status_page/status_page.dart';
-import 'package:whatsapp_clone/views/community_page.dart';
+import 'package:whatsapp_clone/src/views/calls_page/calls_page.dart';
+import 'package:whatsapp_clone/src/views/chats_page/chats_page.dart';
+import 'package:whatsapp_clone/src/views/status_page/status_page.dart';
+import 'package:whatsapp_clone/src/views/community_page.dart';
 
 class AppRouter extends StatefulWidget {
   const AppRouter({Key? key}) : super(key: key);
