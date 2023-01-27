@@ -5,6 +5,11 @@ class AppIcons {
   static const IconData checkIcon = Icons.check;
   static const IconData backIcon = Icons.arrow_back;
   static const IconData closeIcon = Icons.close;
+  static const IconData cameraIcon = Icons.camera_alt_outlined;
+  static const IconData searchIcon = Icons.search;
+  static const IconData optionsIcon = Icons.more_vert;
+  static const IconData faceTimeIcon = Icons.videocam;
+  static const IconData phoneIcon = Icons.phone;
 
   //Sizes
   static const double smSize = 10;

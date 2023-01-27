@@ -25,7 +25,6 @@ class ChatCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       onTap: () {
-        print("hol");
         goToRoute(context, "/chats/$chatId");
       },
       leading: ContactImage(
@@ -36,7 +35,7 @@ class ChatCard extends StatelessWidget {
       title: Text(contact),
       subtitle: Row(
         children: [
-          author == "YOU"
+          author.toUpperCase() == "YOU"
               ? const Icon(
                   AppIcons.checkIcon,
                   size: AppIcons.mdSize,

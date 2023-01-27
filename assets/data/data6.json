@@ -1,0 +1,33 @@
+{
+  "id": 1,
+  "contact":"Tony Stark",
+  "imageUrl":"https://assets.puzzlefactory.pl/puzzle/387/881/original.jpg",
+  "messages":[
+    {
+      "author": "YOU",
+      "content":"Hola Tony",
+      "time": "12:32"
+    },
+    {
+      "author": "YOU",
+      "content":"Tenés un momento para hablar?",
+      "time": "12:32"
+    },
+    {
+      "author": "CONTACT",
+      "content":"Espera",
+      "time": "12:33"
+    },
+    {
+      "author": "CONTACT",
+      "content":"Pepper me necesita",
+      "time": "12:32"
+    },
+
+    {
+      "author": "YOU",
+      "content":"Dale, después te llamo",
+      "time":"13:20"
+    }
+  ]
+}

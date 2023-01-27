@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:whatsapp_clone/src/services/routing_service.dart';
+import 'package:whatsapp_clone/src/styles.dart';
 
 import 'package:whatsapp_clone/src/views/calls_page/calls_page.dart';
 import 'package:whatsapp_clone/src/views/chats_page/chats_page.dart';
@@ -30,9 +31,9 @@ class _AppRouterState extends State<AppRouter>
                 onPressed: () {
                   goToRoute(context, "/camera");
                 },
-                icon: const Icon(Icons.camera_alt_outlined)),
-            IconButton(onPressed: () {}, icon: const Icon(Icons.search)),
-            IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert)),
+                icon: const Icon(AppIcons.cameraIcon)),
+            IconButton(onPressed: () {}, icon: const Icon(AppIcons.searchIcon)),
+            IconButton(onPressed: () {}, icon: const Icon(AppIcons.optionsIcon)),
           ],
           backgroundColor: Theme.of(context).colorScheme.primary,
           bottom: buildNavBar(),
