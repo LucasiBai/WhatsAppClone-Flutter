@@ -10,29 +10,27 @@ class ExitChatButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: AppPaddings.smLeft,
-      child: InkWell(
-        borderRadius: const BorderRadius.all(Radius.circular(40)),
-        onTap: () {
-          goBack(context);
-        },
-        child: Container(
-          constraints: const BoxConstraints(maxHeight: 1),
-          child: Row(
-            children: [
-              const Icon(
-                AppIcons.backIcon,
-                color: Colors.white,
-                size: AppIcons.lSize,
-              ),
-              ContactImage(
-                onTap: () {},
-                imageUrl: contactImg,
-                size: AppSizes.smSize,
-              )
-            ],
-          ),
+    return InkWell(
+      borderRadius: AppBorderRadius.xlAll ,
+      onTap: () {
+        goBack(context);
+      },
+      child: Padding(
+        padding: AppPaddings.smAll,
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            const Icon(
+              AppIcons.backIcon,
+              color: Colors.white,
+              size: AppIcons.lSize,
+            ),
+            ContactImage(
+              onTap: () {},
+              imageUrl: contactImg,
+              size: AppSizes.smSize,
+            )
+          ],
         ),
       ),
     );

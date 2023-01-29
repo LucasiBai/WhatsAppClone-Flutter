@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:whatsapp_clone/src/services/data_service.dart';
 import 'package:whatsapp_clone/src/styles.dart';
+import 'package:whatsapp_clone/src/views/chat_detail_page/chat_bubble.dart';
 import 'package:whatsapp_clone/src/views/chat_detail_page/exit_chat_button.dart';
 
 class ChatDetail extends StatefulWidget {
@@ -41,13 +42,25 @@ class _ChatDetailState extends State<ChatDetail> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: ExitChatButton(
-          contactImg: _contactImg,
-        ),
+        leading: const SizedBox(),
+        leadingWidth: 0,
         backgroundColor: Theme.of(context).colorScheme.primary,
-        title: InkWell(
-          child: Text(_contact),
-          onTap: () {},
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            ExitChatButton(
+              contactImg: _contactImg,
+            ),
+            const SizedBox(
+              width: 10,
+            ),
+            Expanded(
+              child: InkWell(
+                child: Text(_contact),
+                onTap: () {},
+              ),
+            ),
+          ],
         ),
         actions: [
           IconButton(onPressed: () {}, icon: const Icon(AppIcons.faceTimeIcon)),
@@ -55,11 +68,15 @@ class _ChatDetailState extends State<ChatDetail> {
           IconButton(onPressed: () {}, icon: const Icon(AppIcons.optionsIcon)),
         ],
       ),
-      body: Container(
-        color: Colors.black26,
-        child: Column(
-          children: _renderMessages(context),
-        ),
+      body: ListView(
+        children: [
+          Padding(
+            padding: AppPaddings.mdAll,
+            child: Column(
+              children: _renderMessages(context),
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -67,10 +84,17 @@ class _ChatDetailState extends State<ChatDetail> {
   List<Widget> _renderMessages(BuildContext context) {
     List<Widget> messages = [];
     for (final message in _chatMessages) {
-      final widget = Text("${message["content"]} ${message["time"]} ${message["author"]}");
+      final bool ownMessage = message["author"].toUpperCase() == "YOU";
+
+      final widget = Align(
+        alignment: ownMessage ? Alignment.centerRight : Alignment.centerLeft,
+        child: ChatBubble(ownMessage: ownMessage, message: message),
+      );
 
       messages.add(widget);
     }
     return messages;
   }
 }
+
+

@@ -45,7 +45,7 @@ class ChatCard extends StatelessWidget {
         ],
       ),
       trailing: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: AppPaddings.mdVer,
         child: Column(
           children: [
             Text(time),

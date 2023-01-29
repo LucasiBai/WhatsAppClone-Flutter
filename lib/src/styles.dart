@@ -42,6 +42,13 @@ class AppSizes{
   static const double xxlSize = 50;
 }
 
+class AppContraints {
+  static const double smSize = 100;
+  static const double mdSize = 200;
+  static const double lSize = 300;
+  static const double xlSize = 400;
+}
+
 class AppPaddings{
   // Values
   static const double sm = 5;
@@ -53,7 +60,7 @@ class AppPaddings{
   static const EdgeInsets smAll = EdgeInsets.all(sm);
   static const EdgeInsets mdAll = EdgeInsets.all(md);
   static const EdgeInsets lAll = EdgeInsets.all(l);
-  static const EdgeInsets xlAll = EdgeInsets.all(20);
+  static const EdgeInsets xlAll = EdgeInsets.all(xl);
 
   // Horizontal
   static const EdgeInsets smHor = EdgeInsets.symmetric(horizontal: sm);
@@ -73,4 +80,16 @@ class AppPaddings{
   static const EdgeInsets mdLeft = EdgeInsets.fromLTRB(md, 0, 0, 0);
   static const EdgeInsets lLeft = EdgeInsets.fromLTRB(l, 0, 0, 0);
   static const EdgeInsets xlLeft = EdgeInsets.fromLTRB(xl, 0, 0, 0);
+}
+
+class AppBorderRadius{
+  static const double sm = 5;
+  static const double md = 10;
+  static const double l = 15;
+  static const double xl = 20;
+
+  static BorderRadius smAll = BorderRadius.circular(sm);
+  static BorderRadius mdAll = BorderRadius.circular(md);
+  static BorderRadius lAll = BorderRadius.circular(l);
+  static BorderRadius xlAll = BorderRadius.circular(xl);
 }
