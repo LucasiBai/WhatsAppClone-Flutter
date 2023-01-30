@@ -15,7 +15,6 @@ class ChatBubble extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: AppPaddings.smAll,
-      padding: AppPaddings.mdAll,
       constraints: const BoxConstraints(maxWidth: AppContraints.lSize),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.only(
@@ -27,21 +26,31 @@ class ChatBubble extends StatelessWidget {
                 : const Radius.circular(AppBorderRadius.md),
             bottomRight: const Radius.circular(AppBorderRadius.md),
             bottomLeft: const Radius.circular(AppBorderRadius.md)),
-        color: Colors.blue,
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-              "${message["content"]}"),
-          Align(
-            alignment: Alignment.centerRight,
-            child:
-            Text(
-                message["time"]
-            ),
-          )
-        ],
+      child: Card(
+        color: !ownMessage
+            ? Theme.of(context).colorScheme.onPrimary
+            : Theme.of(context).colorScheme.secondary,
+        child: Padding(
+          padding: AppPaddings.mdAll,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Text("${message["content"]}"),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    message["time"],
+                    style: const TextStyle(fontSize: AppTexts.smSize),
+                  ),
+                  if(ownMessage)const Icon(AppIcons.checkIcon, size: AppIcons.mdSize,)
+                ],
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }

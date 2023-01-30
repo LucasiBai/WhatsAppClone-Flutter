@@ -27,9 +27,9 @@ class AppTexts{
   static const FontWeight xlWeight = FontWeight.w800;
 
   //Sizes
-  static const double smSize = 15;
-  static const double mdSize = 20;
-  static const double lSize = 25;
+  static const double smSize = 10;
+  static const double mdSize = 15;
+  static const double lSize = 20;
   static const double xlSize = 30;
   static const double xxlSize = 35;
 }

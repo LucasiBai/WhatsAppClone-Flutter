@@ -68,15 +68,21 @@ class _ChatDetailState extends State<ChatDetail> {
           IconButton(onPressed: () {}, icon: const Icon(AppIcons.optionsIcon)),
         ],
       ),
-      body: ListView(
-        children: [
-          Padding(
-            padding: AppPaddings.mdAll,
-            child: Column(
-              children: _renderMessages(context),
+      body: Container(
+        decoration: const BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage("assets/images/background.jpeg"),
+                fit: BoxFit.cover)),
+        child: ListView(
+          children: [
+            Container(
+              padding: AppPaddings.mdAll,
+              child: Column(
+                children: _renderMessages(context),
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -96,5 +102,3 @@ class _ChatDetailState extends State<ChatDetail> {
     return messages;
   }
 }
-
-
