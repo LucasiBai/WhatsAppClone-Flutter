@@ -23,6 +23,12 @@ class ChatCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
+    Color onBackground = theme.colorScheme.onBackground;
+
+    TextStyle textColor = TextStyle(color: onBackground);
+
     return ListTile(
       onTap: () {
         goToRoute(context, "/chats/$chatId");
@@ -30,9 +36,12 @@ class ChatCard extends StatelessWidget {
       leading: ContactImage(
         size: AppSizes.mdSize,
         imageUrl: imageUrl,
-        onTap: (){},
+        onTap: () {},
       ),
-      title: Text(contact),
+      title: Text(
+        contact,
+        style: textColor,
+      ),
       subtitle: Row(
         children: [
           author.toUpperCase() == "YOU"
@@ -41,14 +50,20 @@ class ChatCard extends StatelessWidget {
                   size: AppIcons.mdSize,
                 )
               : const SizedBox(),
-          Text(message),
+          Text(
+            message,
+            style: textColor.copyWith(color: onBackground.withOpacity(0.5)),
+          ),
         ],
       ),
       trailing: Padding(
         padding: AppPaddings.mdVer,
         child: Column(
           children: [
-            Text(time),
+            Text(
+              time,
+              style: textColor,
+            ),
           ],
         ),
       ),

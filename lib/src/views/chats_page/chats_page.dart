@@ -24,7 +24,9 @@ class _ChatsPageState extends State<ChatsPage> {
   @override
   Widget build(BuildContext context) {
     _getChatsData();
-    return ListView(children: _getChats(_chatData));
+    return Container(
+      color: Theme.of(context).colorScheme.background,
+        child: ListView(children: _getChats(_chatData)));
   }
 
   List<ChatCard> _getChats(List chatData) {

@@ -13,37 +13,32 @@ class ChatBubble extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
+    Color onBackground = theme.colorScheme.onBackground;
+
+    TextStyle textColor = TextStyle(color: onBackground);
+
     return Container(
       margin: AppPaddings.smAll,
       constraints: const BoxConstraints(maxWidth: AppContraints.lSize),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.only(
-            topLeft: !ownMessage
-                ? const Radius.circular(0)
-                : const Radius.circular(AppBorderRadius.md),
-            topRight: ownMessage
-                ? const Radius.circular(0)
-                : const Radius.circular(AppBorderRadius.md),
-            bottomRight: const Radius.circular(AppBorderRadius.md),
-            bottomLeft: const Radius.circular(AppBorderRadius.md)),
-      ),
       child: Card(
         color: !ownMessage
-            ? Theme.of(context).colorScheme.onPrimary
+            ? Theme.of(context).colorScheme.background
             : Theme.of(context).colorScheme.secondary,
         child: Padding(
           padding: AppPaddings.mdAll,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              Text("${message["content"]}"),
+              Text("${message["content"]}", style: textColor,),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(
                     message["time"],
-                    style: const TextStyle(fontSize: AppTexts.smSize),
+                    style: textColor.copyWith(fontSize: AppTexts.smSize, color: onBackground.withOpacity(0.5)),
                   ),
                   if(ownMessage)const Icon(AppIcons.checkIcon, size: AppIcons.mdSize,)
                 ],

@@ -23,6 +23,8 @@ class _ChatDetailState extends State<ChatDetail> {
       "https://www.debate.com.mx/__export/1494286433102/sites/debate/img/2017/05/08/4b463f287cd814216b7e7b2e52e82687.png_2120446623.png";
   List _chatMessages = [];
 
+  List _selectedMessages = [];
+
   void _getData() async {
     final data = await getDetailData(int.parse(widget.chatId));
     setState(() {
@@ -36,6 +38,12 @@ class _ChatDetailState extends State<ChatDetail> {
   void initState() {
     _getData();
     super.initState();
+  }
+
+  void _selectMessage(message) {
+    setState(() {
+      _selectedMessages.add(message);
+    });
   }
 
   @override
@@ -92,9 +100,23 @@ class _ChatDetailState extends State<ChatDetail> {
     for (final message in _chatMessages) {
       final bool ownMessage = message["author"].toUpperCase() == "YOU";
 
-      final widget = Align(
-        alignment: ownMessage ? Alignment.centerRight : Alignment.centerLeft,
-        child: ChatBubble(ownMessage: ownMessage, message: message),
+      final widget = GestureDetector(
+        onLongPress: () {
+          _selectMessage(message);
+        },
+        child: Stack(children: [
+          Align(
+            alignment:
+                ownMessage ? Alignment.centerRight : Alignment.centerLeft,
+            child: ChatBubble(ownMessage: ownMessage, message: message),
+          ),
+          if (_selectedMessages.contains(message))
+            Container(
+              height: 222,
+              width: 222,
+              color: Theme.of(context).colorScheme.tertiary.withOpacity(0.3),
+            )
+        ]),
       );
 
       messages.add(widget);

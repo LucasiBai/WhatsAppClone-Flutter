@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
 
 import 'package:whatsapp_clone/src/routing/app_routes.dart';
+import 'package:whatsapp_clone/src/themes.dart';
 
 void main() {
   usePathUrlStrategy();
@@ -15,9 +16,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       title: "WhatsApp Clone",
-      theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(
-              seedColor: Color(0xff00a884), secondary: Color(0xff25D366))),
+      theme: AppThemes.lightTheme,
+      darkTheme: AppThemes.darkTheme,
       routerConfig: Routes.config,
     );
   }
