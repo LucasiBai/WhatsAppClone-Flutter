@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:whatsapp_clone/src/services/data_service.dart';
 import 'package:whatsapp_clone/src/styles.dart';
-import 'package:whatsapp_clone/src/views/chat_detail_page/chat_bubble.dart';
 import 'package:whatsapp_clone/src/views/chat_detail_page/exit_chat_button.dart';
+import 'package:whatsapp_clone/src/views/chat_detail_page/selectable_chat_bubble.dart';
 
 class ChatDetail extends StatefulWidget {
   const ChatDetail({
@@ -40,42 +40,38 @@ class _ChatDetailState extends State<ChatDetail> {
     super.initState();
   }
 
+  void _deleteMessages() {
+    _removeSelectMessages();
+  }
+
   void _selectMessage(message) {
     setState(() {
       _selectedMessages.add(message);
     });
   }
 
+  void _switchSelectMessageState(message) {
+    setState(() {
+      if (_selectedMessages.contains(message)) {
+        _selectedMessages.remove(message);
+      } else {
+        _selectedMessages.add(message);
+      }
+    });
+  }
+
+  void _removeSelectMessages() {
+    setState(() {
+      _selectedMessages = [];
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: const SizedBox(),
-        leadingWidth: 0,
-        backgroundColor: Theme.of(context).colorScheme.primary,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            ExitChatButton(
-              contactImg: _contactImg,
-            ),
-            const SizedBox(
-              width: 10,
-            ),
-            Expanded(
-              child: InkWell(
-                child: Text(_contact),
-                onTap: () {},
-              ),
-            ),
-          ],
-        ),
-        actions: [
-          IconButton(onPressed: () {}, icon: const Icon(AppIcons.faceTimeIcon)),
-          IconButton(onPressed: () {}, icon: const Icon(AppIcons.phoneIcon)),
-          IconButton(onPressed: () {}, icon: const Icon(AppIcons.optionsIcon)),
-        ],
-      ),
+      appBar: _selectedMessages.isNotEmpty
+          ? _selectActionsAppBar(context)
+          : _contactAppBar(context),
       body: Container(
         decoration: const BoxDecoration(
             image: DecorationImage(
@@ -95,28 +91,82 @@ class _ChatDetailState extends State<ChatDetail> {
     );
   }
 
+  AppBar _contactAppBar(BuildContext context) {
+    return AppBar(
+      leading: const SizedBox(),
+      leadingWidth: 0,
+      backgroundColor: Theme.of(context).colorScheme.primary,
+      title: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          ExitChatButton(
+            contactImg: _contactImg,
+          ),
+          const SizedBox(
+            width: 10,
+          ),
+          Expanded(
+            child: InkWell(
+              child: Text(_contact),
+              onTap: () {},
+            ),
+          ),
+        ],
+      ),
+      actions: [
+        IconButton(onPressed: () {}, icon: const Icon(AppIcons.faceTimeIcon)),
+        IconButton(onPressed: () {}, icon: const Icon(AppIcons.phoneIcon)),
+        IconButton(onPressed: () {}, icon: const Icon(AppIcons.optionsIcon)),
+      ],
+    );
+  }
+
+  AppBar _selectActionsAppBar(BuildContext context) {
+    return AppBar(
+      leading: const SizedBox(),
+      leadingWidth: 0,
+      backgroundColor: Theme.of(context).colorScheme.primary,
+      title: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          IconButton(
+              onPressed: () {
+                _removeSelectMessages();
+              },
+              icon: const Icon(AppIcons.backIcon)),
+          const SizedBox(
+            width: 10,
+          ),
+          Expanded(
+            child: Text("${_selectedMessages.length} mensajes seleccionados"),
+          ),
+        ],
+      ),
+      actions: [
+        IconButton(
+            onPressed: () {
+              _deleteMessages();
+            },
+            icon: const Icon(AppIcons.deleteIcon)),
+      ],
+    );
+  }
+
   List<Widget> _renderMessages(BuildContext context) {
     List<Widget> messages = [];
     for (final message in _chatMessages) {
       final bool ownMessage = message["author"].toUpperCase() == "YOU";
 
-      final widget = GestureDetector(
-        onLongPress: () {
-          _selectMessage(message);
+      final widget = SelectableChatBubble(
+        onTap: (message) {
+          if (_selectedMessages.isNotEmpty) _switchSelectMessageState(message);
         },
-        child: Stack(children: [
-          Align(
-            alignment:
-                ownMessage ? Alignment.centerRight : Alignment.centerLeft,
-            child: ChatBubble(ownMessage: ownMessage, message: message),
-          ),
-          if (_selectedMessages.contains(message))
-            Container(
-              height: 222,
-              width: 222,
-              color: Theme.of(context).colorScheme.tertiary.withOpacity(0.3),
-            )
-        ]),
+        onLongPress: (message) {
+          if (_selectedMessages.isEmpty) _selectMessage(message);
+        },
+        message: message,
+        selected: _selectedMessages.contains(message),
+        ownMessage: ownMessage,
       );
 
       messages.add(widget);
@@ -124,3 +174,5 @@ class _ChatDetailState extends State<ChatDetail> {
     return messages;
   }
 }
+
+

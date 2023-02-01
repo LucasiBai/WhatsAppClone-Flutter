@@ -31,16 +31,25 @@ class ChatBubble extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              Text("${message["content"]}", style: textColor,),
+              Text(
+                "${message["content"]}",
+                style: textColor,
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(
                     message["time"],
-                    style: textColor.copyWith(fontSize: AppTexts.smSize, color: onBackground.withOpacity(0.5)),
+                    style: textColor.copyWith(
+                        fontSize: AppTexts.smSize,
+                        color: onBackground.withOpacity(0.5)),
                   ),
-                  if(ownMessage)const Icon(AppIcons.checkIcon, size: AppIcons.mdSize,)
+                  if (ownMessage)
+                    const Icon(
+                      AppIcons.checkIcon,
+                      size: AppIcons.mdSize,
+                    )
                 ],
               ),
             ],

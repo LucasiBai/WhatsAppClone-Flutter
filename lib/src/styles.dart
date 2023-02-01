@@ -10,6 +10,7 @@ class AppIcons {
   static const IconData optionsIcon = Icons.more_vert;
   static const IconData faceTimeIcon = Icons.videocam;
   static const IconData phoneIcon = Icons.phone;
+  static const IconData deleteIcon = Icons.delete;
 
   //Sizes
   static const double smSize = 10;
