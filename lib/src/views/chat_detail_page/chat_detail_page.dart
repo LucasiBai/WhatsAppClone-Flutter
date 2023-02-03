@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:whatsapp_clone/src/services/data_service.dart';
 import 'package:whatsapp_clone/src/styles.dart';
+import 'package:whatsapp_clone/src/views/chat_detail_page/chat_text_field.dart';
 import 'package:whatsapp_clone/src/views/chat_detail_page/exit_chat_button.dart';
 import 'package:whatsapp_clone/src/views/chat_detail_page/selectable_chat_bubble.dart';
 
@@ -72,22 +73,28 @@ class _ChatDetailState extends State<ChatDetail> {
       appBar: _selectedMessages.isNotEmpty
           ? _selectActionsAppBar(context)
           : _contactAppBar(context),
-      body: Container(
-        decoration: const BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage("assets/images/background.jpeg"),
-                fit: BoxFit.cover)),
-        child: ListView(
-          children: [
-            Container(
-              padding: AppPaddings.mdAll,
-              child: Column(
-                children: _renderMessages(context),
+      body: Stack(children: [
+        Container(
+          decoration: const BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage("assets/images/background.jpeg"),
+                  fit: BoxFit.cover)),
+          child: ListView(
+            children: [
+              Container(
+                padding: AppPaddings.mdAll,
+                child: Column(
+                  children: _renderMessages(context),
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
-      ),
+        const Align(
+          alignment: Alignment.bottomCenter,
+          child: ChatTextField(),
+        )
+      ]),
     );
   }
 
@@ -174,5 +181,3 @@ class _ChatDetailState extends State<ChatDetail> {
     return messages;
   }
 }
-
-

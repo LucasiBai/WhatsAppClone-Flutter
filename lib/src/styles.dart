@@ -11,6 +11,7 @@ class AppIcons {
   static const IconData faceTimeIcon = Icons.videocam;
   static const IconData phoneIcon = Icons.phone;
   static const IconData deleteIcon = Icons.delete;
+  static const IconData micIcon = Icons.mic;
 
   //Sizes
   static const double smSize = 10;

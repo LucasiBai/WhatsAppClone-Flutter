@@ -48,6 +48,7 @@ class ChatCard extends StatelessWidget {
               ? const Icon(
                   AppIcons.checkIcon,
                   size: AppIcons.mdSize,
+
                 )
               : const SizedBox(),
           Text(
