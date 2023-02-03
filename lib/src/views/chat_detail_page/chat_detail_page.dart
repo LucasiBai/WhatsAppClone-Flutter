@@ -90,9 +90,9 @@ class _ChatDetailState extends State<ChatDetail> {
             ],
           ),
         ),
-        const Align(
+        Align(
           alignment: Alignment.bottomCenter,
-          child: ChatTextField(),
+          child: ChatTextField(chatId: int.parse(widget.chatId),),
         )
       ]),
     );

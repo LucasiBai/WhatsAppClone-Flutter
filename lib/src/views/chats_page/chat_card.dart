@@ -45,10 +45,10 @@ class ChatCard extends StatelessWidget {
       subtitle: Row(
         children: [
           author.toUpperCase() == "YOU"
-              ? const Icon(
+              ? Icon(
                   AppIcons.checkIcon,
                   size: AppIcons.mdSize,
-
+                  color: onBackground.withOpacity(0.5),
                 )
               : const SizedBox(),
           Text(

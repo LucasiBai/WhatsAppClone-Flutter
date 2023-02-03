@@ -12,6 +12,7 @@ class AppIcons {
   static const IconData phoneIcon = Icons.phone;
   static const IconData deleteIcon = Icons.delete;
   static const IconData micIcon = Icons.mic;
+  static const IconData sendIcon = Icons.send;
 
   //Sizes
   static const double smSize = 10;

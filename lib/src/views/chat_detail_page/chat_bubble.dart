@@ -46,10 +46,9 @@ class ChatBubble extends StatelessWidget {
                         color: onBackground.withOpacity(0.5)),
                   ),
                   if (ownMessage)
-                    const Icon(
-                      AppIcons.checkIcon,
-                      size: AppIcons.mdSize,
-                    )
+                    Icon(AppIcons.checkIcon,
+                        size: AppIcons.mdSize,
+                        color: onBackground.withOpacity(0.5))
                 ],
               ),
             ],
