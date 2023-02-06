@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "contact": 5,
+    "stories": 2,
+    "lastModification": "Ayer 20:32"
+  },
+  {
+    "id": 2,
+    "contact": 1,
+    "stories": 4,
+    "lastModification": "Hoy 15:45"
+  },
+  {
+    "id": 3,
+    "contact": 3,
+    "stories": 1,
+    "lastModification": "Hoy 18:30"
+  }
+]

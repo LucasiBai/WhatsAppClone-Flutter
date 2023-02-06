@@ -13,6 +13,7 @@ class AppIcons {
   static const IconData deleteIcon = Icons.delete;
   static const IconData micIcon = Icons.mic;
   static const IconData sendIcon = Icons.send;
+  static const IconData switchCameraIcon = Icons.switch_camera_rounded;
 
   //Sizes
   static const double smSize = 10;

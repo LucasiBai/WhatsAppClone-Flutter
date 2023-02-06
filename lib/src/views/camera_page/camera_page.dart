@@ -10,11 +10,11 @@ class Camera extends StatefulWidget {
 
   @override
   State<Camera> createState() => _CameraState();
-
 }
 
 class _CameraState extends State<Camera> {
-  late CameraDescription _camera;
+  late List<CameraDescription> _cameras;
+  late int _currentCamera;
 
   late CameraController _controller;
   late Future<void> _initializeControllerFuture;
@@ -32,18 +32,38 @@ class _CameraState extends State<Camera> {
   }
 
   void initCamera() async {
-    final camera = await useSetCameras();
+    final cameras = await useSetCameras();
 
     setState(() {
-      _camera = camera;
+      _cameras = cameras;
+      _currentCamera = 0;
     });
 
     _controller = CameraController(
-      _camera,
+      _cameras[_currentCamera],
       ResolutionPreset.medium,
     );
 
     _initializeControllerFuture = _controller.initialize();
+  }
+
+  void updateController(){
+    setState(() {
+      _controller = CameraController(
+        _cameras[_currentCamera],
+        ResolutionPreset.medium,
+      );
+
+      _initializeControllerFuture = _controller.initialize();
+    });
+  }
+
+  void switchCamera(){
+    setState(() {
+      _currentCamera = _currentCamera ==0? 1: 0;
+    });
+
+    updateController();
   }
 
   @override
@@ -52,32 +72,47 @@ class _CameraState extends State<Camera> {
       body: SafeArea(
         child: Container(
           color: Colors.black,
-          child: Column(
-            children: [
-              Row(
-                children: [
-                  IconButton(
-                    onPressed: (){
-                      goBack(context);
-                    },
-                    icon: const Icon(AppIcons.closeIcon , color: Colors.white,),
-                  ),
-                ],
-              ),
-              FutureBuilder<void>(
-                future: _initializeControllerFuture,
-                builder: (context, snapshot) {
-                  if (snapshot.connectionState == ConnectionState.done) {
-                    // If the Future is complete, display the preview.
-                    return CameraPreview(_controller);
-                  } else {
-                    // Otherwise, display a loading indicator.
-                    return const Center(child: CircularProgressIndicator());
-                  }
-                },
-              )
-            ],
-          ),
+          child: Stack(children: [
+            Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    IconButton(
+                      onPressed: () {
+                        goBack(context);
+                      },
+                      icon: const Icon(
+                        AppIcons.closeIcon,
+                        color: Colors.white,
+                      ),
+                    ),
+                    IconButton(
+                      onPressed: () {
+                        switchCamera();
+                      },
+                      icon: const Icon(
+                        AppIcons.switchCameraIcon,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ],
+                ),
+                FutureBuilder<void>(
+                  future: _initializeControllerFuture,
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.done) {
+                      // If the Future is complete, display the preview.
+                      return CameraPreview(_controller);
+                    } else {
+                      // Otherwise, display a loading indicator.
+                      return const Center(child: CircularProgressIndicator());
+                    }
+                  },
+                ),
+              ],
+            ),
+          ]),
         ),
       ),
     );

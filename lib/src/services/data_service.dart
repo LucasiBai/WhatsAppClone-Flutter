@@ -33,5 +33,9 @@ void addMessageTo(int chatID, String content)async{
   parsedData["messages"].add(newMessage);
 
   file.writeAsStringSync(jsonEncode(parsedData));
+}
 
+Future<List> getStatusList() async {
+  final data = await rootBundle.loadString('assets/data/data_current_status.json');
+  return jsonDecode(data);
 }
