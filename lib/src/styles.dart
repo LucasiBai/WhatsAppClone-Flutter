@@ -13,14 +13,17 @@ class AppIcons {
   static const IconData deleteIcon = Icons.delete;
   static const IconData micIcon = Icons.mic;
   static const IconData sendIcon = Icons.send;
-  static const IconData switchCameraIcon = Icons.switch_camera_rounded;
+  static const IconData switchCameraIcon = Icons.cameraswitch;
+  static const IconData captImageCameraIcon = Icons.circle_outlined;
+  static const IconData galleryIcon = Icons.image;
+  static const IconData flashIcon = Icons.flash_on;
 
   //Sizes
   static const double smSize = 10;
   static const double mdSize = 15;
   static const double lSize = 20;
   static const double xlSize = 25;
-  static const double xxlSize = 35;
+  static const double xxlSize = 60;
 
 }
 

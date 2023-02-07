@@ -47,7 +47,7 @@ class _CameraState extends State<Camera> {
     _initializeControllerFuture = _controller.initialize();
   }
 
-  void updateController(){
+  void updateController() {
     setState(() {
       _controller = CameraController(
         _cameras[_currentCamera],
@@ -58,9 +58,9 @@ class _CameraState extends State<Camera> {
     });
   }
 
-  void switchCamera(){
+  void switchCamera() {
     setState(() {
-      _currentCamera = _currentCamera ==0? 1: 0;
+      _currentCamera = _currentCamera == 0 ? 1 : 0;
     });
 
     updateController();
@@ -88,30 +88,83 @@ class _CameraState extends State<Camera> {
                       ),
                     ),
                     IconButton(
-                      onPressed: () {
-                        switchCamera();
-                      },
-                      icon: const Icon(
-                        AppIcons.switchCameraIcon,
-                        color: Colors.white,
-                      ),
-                    ),
+                        onPressed: () {},
+                        icon: const Icon(
+                          AppIcons.flashIcon,
+                          color: Colors.white,
+                        )),
                   ],
                 ),
                 FutureBuilder<void>(
                   future: _initializeControllerFuture,
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.done) {
-                      // If the Future is complete, display the preview.
                       return CameraPreview(_controller);
                     } else {
-                      // Otherwise, display a loading indicator.
                       return const Center(child: CircularProgressIndicator());
                     }
                   },
                 ),
               ],
             ),
+            Container(
+              margin: const EdgeInsets.symmetric(
+                  vertical: AppPaddings.l, horizontal: AppPaddings.md),
+              child: Align(
+                alignment: Alignment.bottomCenter,
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      IconButton(
+                          onPressed: () {},
+                          icon: const Icon(
+                            AppIcons.galleryIcon,
+                            color: Colors.white,
+                            size: AppIcons.lSize,
+                          )),
+                      IconButton(
+                          onPressed: () async {
+
+                            try {
+
+                              await _initializeControllerFuture;
+                              final image = await _controller.takePicture();
+
+                              if (!mounted) return;
+
+                              await Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) => Scaffold(
+                                    body: Center(
+                                      child: Image.asset(
+                                        image.path,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              );
+                            } catch (e) {
+                              print(e);
+                            }
+                          },
+                          icon: const Icon(
+                            AppIcons.captImageCameraIcon,
+                            color: Colors.white,
+                            size: AppIcons.xlSize,
+                          )),
+                      IconButton(
+                        onPressed: () {
+                          switchCamera();
+                        },
+                        icon: const Icon(
+                          AppIcons.switchCameraIcon,
+                          color: Colors.white,
+                          size: AppIcons.lSize,
+                        ),
+                      ),
+                    ]),
+              ),
+            )
           ]),
         ),
       ),
