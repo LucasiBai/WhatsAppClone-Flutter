@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:whatsapp_clone/src/_widgets/contact_image.dart';
 import 'package:whatsapp_clone/src/services/data_service.dart';
+import 'package:whatsapp_clone/src/styles.dart';
 
 class StatusPage extends StatefulWidget {
   const StatusPage({Key? key}) : super(key: key);
@@ -27,9 +29,7 @@ class _StatusPageState extends State<StatusPage> {
   @override
   Widget build(BuildContext context) {
     return ListView(
-      children: [
-
-        ..._getCards()],
+      children: [Text("Recientes"), ..._getCards()],
     );
   }
 
@@ -37,8 +37,12 @@ class _StatusPageState extends State<StatusPage> {
     List<Widget> statusCards = [];
 
     for (final status in _feedList) {
-      final widget = Card(
-        child: Text(status["stories"].toString()),
+      final widget = ListTile(
+        leading: ContactImage(
+          size: AppSizes.mdSize,
+          imageUrl: status["contactImg"],
+          onTap: () {},
+        ),
       );
 
       statusCards.add(widget);
