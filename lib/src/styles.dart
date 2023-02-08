@@ -16,7 +16,8 @@ class AppIcons {
   static const IconData switchCameraIcon = Icons.cameraswitch;
   static const IconData captImageCameraIcon = Icons.circle_outlined;
   static const IconData galleryIcon = Icons.image;
-  static const IconData flashIcon = Icons.flash_on;
+  static const IconData flashOnIcon = Icons.flash_on;
+  static const IconData flashOffIcon = Icons.flash_off;
 
   //Sizes
   static const double smSize = 10;

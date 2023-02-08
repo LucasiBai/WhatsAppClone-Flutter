@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:whatsapp_clone/src/services/camera_service.dart';
@@ -18,6 +20,9 @@ class _CameraState extends State<Camera> {
 
   late CameraController _controller;
   late Future<void> _initializeControllerFuture;
+
+  bool _isFlashOn = false;
+  bool _isShooting = false;
 
   @override
   void initState() {
@@ -70,8 +75,9 @@ class _CameraState extends State<Camera> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Container(
-          color: Colors.black,
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 80),
+          color: _isShooting ? Colors.white.withOpacity(0.8) : Colors.black,
           child: Stack(children: [
             Column(
               children: [
@@ -88,9 +94,15 @@ class _CameraState extends State<Camera> {
                       ),
                     ),
                     IconButton(
-                        onPressed: () {},
-                        icon: const Icon(
-                          AppIcons.flashIcon,
+                        onPressed: () {
+                          _controller.setFlashMode(
+                              _isFlashOn ? FlashMode.off : FlashMode.torch);
+                          setState(() {
+                            _isFlashOn = !_isFlashOn;
+                          });
+                        },
+                        icon: Icon(
+                          _isFlashOn? AppIcons.flashOnIcon: AppIcons.flashOffIcon,
                           color: Colors.white,
                         )),
                   ],
@@ -124,8 +136,16 @@ class _CameraState extends State<Camera> {
                           )),
                       IconButton(
                           onPressed: () async {
+                            setState(() {
+                              _isShooting = true;
+                            });
 
-                            try {
+                            Timer(
+                                Duration(milliseconds: 100),
+                                () => setState(() {
+                                      _isShooting = false;
+                                    }));
+                            /* try {
 
                               await _initializeControllerFuture;
                               final image = await _controller.takePicture();
@@ -145,7 +165,7 @@ class _CameraState extends State<Camera> {
                               );
                             } catch (e) {
                               print(e);
-                            }
+                            } */
                           },
                           icon: const Icon(
                             AppIcons.captImageCameraIcon,
