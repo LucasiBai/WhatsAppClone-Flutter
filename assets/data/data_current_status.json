@@ -1,20 +1,26 @@
 [
   {
     "id": 1,
+    "contactName": "Mercado Libre",
     "contactImg": "https://blog.saleslayer.com/hubfs/mercado-libre-logo.jpg",
     "stories": 2,
-    "lastModification": "Ayer 20:32"
+    "lastModification": "Ayer 20:32",
+    "viewed": false
   },
   {
     "id": 2,
+    "contactName": "Dewey Wilkerson",
     "contactImg": "https://i.pinimg.com/736x/e1/36/11/e136114cd3bdc194a49e6314b6faf636--jim-halpert-beets.jpg",
     "stories": 4,
-    "lastModification": "Hoy 15:45"
+    "lastModification": "Hoy 15:45",
+    "viewed": false
   },
   {
     "id": 3,
+    "contactName": "Jim Halpert",
     "contactImg": "https://imageresizer.static9.net.au/U6BsdWkdqh9DKo4gFFwDJHuSVko=/160x0:928x768/400x0/https%3A%2F%2Fprod.static9.net.au%2Ffs%2F733ecaab-640a-441a-98a7-39aa7c73ebe1",
     "stories": 1,
-    "lastModification": "Hoy 18:30"
+    "lastModification": "Hoy 18:30",
+    "viewed": true
   }
 ]

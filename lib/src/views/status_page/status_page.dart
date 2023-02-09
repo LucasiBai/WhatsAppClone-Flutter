@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:whatsapp_clone/src/_widgets/contact_image.dart';
 import 'package:whatsapp_clone/src/services/data_service.dart';
 import 'package:whatsapp_clone/src/styles.dart';
+import 'package:whatsapp_clone/src/views/status_page/status_card.dart';
 
 class StatusPage extends StatefulWidget {
   const StatusPage({Key? key}) : super(key: key);
@@ -28,26 +29,36 @@ class _StatusPageState extends State<StatusPage> {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: [Text("Recientes"), ..._getCards()],
+    final theme = Theme.of(context);
+
+    Color onBackground = theme.colorScheme.onBackground;
+
+    TextStyle textColor = TextStyle(color: onBackground);
+
+    return Container(
+      color: theme.colorScheme.background,
+      child: ListView(
+        children: [
+          Text("Recientes", style: textColor,),
+          ..._getCards()["notViewed"],
+          Text("Vistos", style: textColor,),
+          ..._getCards()["viewed"]
+        ],
+      ),
     );
   }
 
-  List<Widget> _getCards() {
-    List<Widget> statusCards = [];
+  Map _getCards() {
+    List<Widget> statusCardsViewed = [];
+    List<Widget> statusCardsNotViewed = [];
 
     for (final status in _feedList) {
-      final widget = ListTile(
-        leading: ContactImage(
-          size: AppSizes.mdSize,
-          imageUrl: status["contactImg"],
-          onTap: () {},
-        ),
+      final widget = StatusCard(
+          statusData: status,
       );
-
-      statusCards.add(widget);
+      status["viewed"]? statusCardsViewed.add(widget) : statusCardsNotViewed.add(widget);
     }
 
-    return statusCards;
+    return {"notViewed": statusCardsViewed, "viewed":statusCardsNotViewed};
   }
 }
