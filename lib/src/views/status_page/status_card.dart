@@ -28,7 +28,8 @@ class StatusCard extends StatelessWidget {
             : theme.colorScheme.secondary,
         radius: Radius.circular(borderRadius),
         borderType: BorderType.Circle,
-        dashPattern: [(2 * pi * borderRadius) / statusData["stories"], 2],
+        dashPattern: [
+          (2 * pi * borderRadius) / statusData["stories"]- 1.5,1.5],
         strokeWidth: 2,
         child: ContactImage(
           size: AppSizes.mdSize,

@@ -18,6 +18,7 @@ class AppIcons {
   static const IconData galleryIcon = Icons.image;
   static const IconData flashOnIcon = Icons.flash_on;
   static const IconData flashOffIcon = Icons.flash_off;
+  static const IconData plusIcon = Icons.add;
 
   //Sizes
   static const double smSize = 10;
@@ -36,10 +37,10 @@ class AppTexts{
 
   //Sizes
   static const double smSize = 10;
-  static const double mdSize = 15;
-  static const double lSize = 20;
-  static const double xlSize = 30;
-  static const double xxlSize = 35;
+  static const double mdSize = 12;
+  static const double lSize = 15;
+  static const double xlSize = 20;
+  static const double xxlSize = 25;
 }
 
 class AppSizes{

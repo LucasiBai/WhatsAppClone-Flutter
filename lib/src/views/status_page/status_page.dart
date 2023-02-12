@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:whatsapp_clone/src/_widgets/contact_image.dart';
 import 'package:whatsapp_clone/src/services/data_service.dart';
+import 'package:whatsapp_clone/src/services/routing_service.dart';
+
 import 'package:whatsapp_clone/src/styles.dart';
+import 'package:whatsapp_clone/src/views/status_page/my_status_card.dart';
 import 'package:whatsapp_clone/src/views/status_page/status_card.dart';
 
 class StatusPage extends StatefulWidget {
@@ -33,15 +35,35 @@ class _StatusPageState extends State<StatusPage> {
 
     Color onBackground = theme.colorScheme.onBackground;
 
-    TextStyle textColor = TextStyle(color: onBackground);
+    TextStyle textColor = TextStyle(
+        color: onBackground.withOpacity(0.5),
+        fontWeight: AppTexts.mdWeight,
+        fontSize: AppTexts.mdSize);
 
     return Container(
       color: theme.colorScheme.background,
       child: ListView(
         children: [
-          Text("Recientes", style: textColor,),
+          MyStatusCard(
+            onTap: () {
+              goToRoute(context, "/camera");
+            },
+          ),
+          Padding(
+            padding: AppPaddings.mdHor,
+            child: Text(
+              "Recientes",
+              style: textColor,
+            ),
+          ),
           ..._getCards()["notViewed"],
-          Text("Vistos", style: textColor,),
+          Padding(
+            padding: AppPaddings.mdHor,
+            child: Text(
+              "Vistos",
+              style: textColor,
+            ),
+          ),
           ..._getCards()["viewed"]
         ],
       ),
@@ -54,11 +76,13 @@ class _StatusPageState extends State<StatusPage> {
 
     for (final status in _feedList) {
       final widget = StatusCard(
-          statusData: status,
+        statusData: status,
       );
-      status["viewed"]? statusCardsViewed.add(widget) : statusCardsNotViewed.add(widget);
+      status["viewed"]
+          ? statusCardsViewed.add(widget)
+          : statusCardsNotViewed.add(widget);
     }
 
-    return {"notViewed": statusCardsViewed, "viewed":statusCardsNotViewed};
+    return {"notViewed": statusCardsViewed, "viewed": statusCardsNotViewed};
   }
 }

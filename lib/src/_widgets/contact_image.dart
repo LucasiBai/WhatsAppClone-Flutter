@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 
 class ContactImage extends StatelessWidget {
-  const ContactImage({Key? key, required this.onTap, required this.size, required this.imageUrl}) : super(key: key);
+  const ContactImage(
+      {Key? key,
+      required this.onTap,
+      required this.size,
+      required this.imageUrl})
+      : super(key: key);
 
   final Function onTap;
   final double size;
@@ -10,7 +15,8 @@ class ContactImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CircleAvatar(
-      backgroundImage: NetworkImage(imageUrl),
+      backgroundImage: const AssetImage("assets/images/contact_image.webp"),
+      foregroundImage: NetworkImage(imageUrl),
       radius: size,
     );
   }
