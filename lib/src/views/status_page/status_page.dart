@@ -50,7 +50,8 @@ class _StatusPageState extends State<StatusPage> {
             },
           ),
           Padding(
-            padding: AppPaddings.mdHor,
+            padding: const EdgeInsets.symmetric(
+                vertical: AppPaddings.sm, horizontal: AppPaddings.l),
             child: Text(
               "Recientes",
               style: textColor,
@@ -58,13 +59,38 @@ class _StatusPageState extends State<StatusPage> {
           ),
           ..._getCards()["notViewed"],
           Padding(
-            padding: AppPaddings.mdHor,
+            padding: const EdgeInsets.symmetric(
+                vertical: AppPaddings.sm, horizontal: AppPaddings.l),
             child: Text(
               "Vistos",
               style: textColor,
             ),
           ),
-          ..._getCards()["viewed"]
+          ..._getCards()["viewed"],
+          Divider(
+            color: onBackground.withOpacity(0.2),
+          ),
+          Center(
+            child: Padding(
+              padding: AppPaddings.smHor,
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(AppIcons.lockIcon, size: AppIcons.mdSize, color: onBackground.withOpacity(0.5),),
+                  Text(
+                    "Tus actualizaciones de estado están",
+                    textAlign: TextAlign.center,
+                    style: textColor.copyWith(fontSize: AppTexts.mdSize, fontWeight: AppTexts.mdWeight),
+                  ),
+                  Text(
+                    " cifradas de extremo a extremo.",
+                    textAlign: TextAlign.center,
+                    style: textColor.copyWith(color: theme.colorScheme.secondary,fontSize: AppTexts.mdSize, fontWeight: AppTexts.mdWeight),
+                  ),
+                ],
+              ),
+            )
+          )
         ],
       ),
     );

@@ -19,6 +19,7 @@ class AppIcons {
   static const IconData flashOnIcon = Icons.flash_on;
   static const IconData flashOffIcon = Icons.flash_off;
   static const IconData plusIcon = Icons.add;
+  static const IconData lockIcon = Icons.lock;
 
   //Sizes
   static const double smSize = 10;

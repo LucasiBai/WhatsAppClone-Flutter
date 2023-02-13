@@ -10,6 +10,21 @@ class StatusCard extends StatelessWidget {
 
   final statusData;
 
+  double colorWidth(double radius, int statusCount, double separation) {
+    return ((2 * pi * radius) - (statusCount * separation)) / statusCount;
+  }
+
+  double separation(int statusCount) {
+    if (statusCount <= 20)
+      return 3.0;
+    else if (statusCount <= 30)
+      return 1.8;
+    else if (statusCount <= 60)
+      return 1.0;
+    else
+      return 0.3;
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -18,7 +33,7 @@ class StatusCard extends StatelessWidget {
 
     TextStyle textColor = TextStyle(color: onBackground);
 
-    double borderRadius = AppBorderRadius.md;
+    double borderRadius = AppSizes.mdSize - 1;
 
     return ListTile(
       onTap: () {},
@@ -28,11 +43,19 @@ class StatusCard extends StatelessWidget {
             : theme.colorScheme.secondary,
         radius: Radius.circular(borderRadius),
         borderType: BorderType.Circle,
-        dashPattern: [
-          (2 * pi * borderRadius) / statusData["stories"]- 1.5,1.5],
+        dashPattern: statusData["stories"] == 1
+            ? [
+                (2 * pi * (borderRadius + 2)),
+                0,
+              ]
+            : [
+                colorWidth(borderRadius + 2, statusData["stories"],
+                    separation(statusData["stories"])),
+                separation(statusData["stories"]),
+              ],
         strokeWidth: 2,
         child: ContactImage(
-          size: AppSizes.mdSize,
+          size: borderRadius ,
           imageUrl: statusData["contactImg"],
           onTap: () {},
         ),
