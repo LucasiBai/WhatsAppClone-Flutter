@@ -70,26 +70,38 @@ class _StatusPageState extends State<StatusPage> {
           Divider(
             color: onBackground.withOpacity(0.2),
           ),
-          Center(
-            child: Padding(
-              padding: AppPaddings.smHor,
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Icon(AppIcons.lockIcon, size: AppIcons.mdSize, color: onBackground.withOpacity(0.5),),
-                  Text(
-                    "Tus actualizaciones de estado están",
-                    textAlign: TextAlign.center,
-                    style: textColor.copyWith(fontSize: AppTexts.mdSize, fontWeight: AppTexts.mdWeight),
+          Container(
+
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 0, AppPaddings.sm, 0),
+                  child: Icon(
+                    AppIcons.lockIcon,
+                    size: AppIcons.mdSize,
+                    color: onBackground.withOpacity(0.5),
                   ),
-                  Text(
-                    " cifradas de extremo a extremo.",
+                ),
+                RichText(
                     textAlign: TextAlign.center,
-                    style: textColor.copyWith(color: theme.colorScheme.secondary,fontSize: AppTexts.mdSize, fontWeight: AppTexts.mdWeight),
-                  ),
-                ],
-              ),
-            )
+                    text: TextSpan(
+                        style: textColor.copyWith(
+                            fontSize: AppTexts.mdSize,
+                            fontWeight: AppTexts.mdWeight),
+                        children: [
+                          const TextSpan(
+                              text: "Tus actualizaciones de estado están "),
+                          TextSpan(
+                            text: "cifradas de extremo a extremo.",
+                            style: textColor.copyWith(
+                                color: theme.colorScheme.secondary,
+                                fontSize: AppTexts.mdSize,
+                                fontWeight: AppTexts.mdWeight),
+                          )
+                        ])),
+              ],
+            ),
           )
         ],
       ),

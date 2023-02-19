@@ -51,9 +51,15 @@ class ChatCard extends StatelessWidget {
                   color: onBackground.withOpacity(0.5),
                 )
               : const SizedBox(),
-          Text(
-            message,
-            style: textColor.copyWith(color: onBackground.withOpacity(0.5)),
+          Container(
+            constraints: const BoxConstraints(maxWidth: 220),
+            child: RichText(
+              overflow: TextOverflow.ellipsis,
+              text: TextSpan(
+                text: message,
+                style: textColor.copyWith(color: onBackground.withOpacity(0.5)),
+              ),
+            ),
           ),
         ],
       ),
