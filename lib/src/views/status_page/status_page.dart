@@ -49,29 +49,40 @@ class _StatusPageState extends State<StatusPage> {
               goToRoute(context, "/camera");
             },
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(
-                vertical: AppPaddings.sm, horizontal: AppPaddings.l),
-            child: Text(
-              "Recientes",
-              style: textColor,
+          if (_getCards()["notViewed"].length == 0 &&
+              _getCards()["viewed"].length == 0)
+            Padding(
+              padding: const EdgeInsets.fromLTRB(
+                  AppPaddings.l, AppPaddings.sm, AppPaddings.l, AppPaddings.xl),
+              child: Text(
+                "No hay estados recientes.",
+                style: textColor,
+              ),
             ),
-          ),
+          if (_getCards()["notViewed"].length > 0)
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                  vertical: AppPaddings.sm, horizontal: AppPaddings.l),
+              child: Text(
+                "Recientes",
+                style: textColor,
+              ),
+            ),
           ..._getCards()["notViewed"],
-          Padding(
-            padding: const EdgeInsets.symmetric(
-                vertical: AppPaddings.sm, horizontal: AppPaddings.l),
-            child: Text(
-              "Vistos",
-              style: textColor,
+          if (_getCards()["viewed"].length > 0)
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                  vertical: AppPaddings.sm, horizontal: AppPaddings.l),
+              child: Text(
+                "Vistos",
+                style: textColor,
+              ),
             ),
-          ),
           ..._getCards()["viewed"],
           Divider(
             color: onBackground.withOpacity(0.2),
           ),
           Container(
-
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [

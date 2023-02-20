@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:whatsapp_clone/src/_widgets/contact_image.dart';
+import 'package:whatsapp_clone/src/services/routing_service.dart';
 import 'package:whatsapp_clone/src/styles.dart';
 
 class StatusCard extends StatelessWidget {
@@ -36,7 +37,9 @@ class StatusCard extends StatelessWidget {
     double borderRadius = AppSizes.mdSize - 1;
 
     return ListTile(
-      onTap: () {},
+      onTap: () {
+        goToRoute(context, "/status/${statusData["id"]}");
+      },
       leading: DottedBorder(
         color: !statusData["viewed"]
             ? onBackground.withOpacity(0.5)
