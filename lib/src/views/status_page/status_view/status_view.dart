@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp_clone/src/services/data_service.dart';
+import 'package:whatsapp_clone/src/views/status_page/status_view/status_view_card.dart';
 
-
-class StatusView extends StatefulWidget{
+class StatusView extends StatefulWidget {
   const StatusView({Key? key, this.userId}) : super(key: key);
   final userId;
 
@@ -11,12 +11,22 @@ class StatusView extends StatefulWidget{
 }
 
 class _StatusViewState extends State<StatusView> {
-  String _url = "https://www.gravatar.com/avatar/16c1ef3ec3d82fb7e2eb80d479c64414?s=256&d=identicon&r=PG";
+  List _urls = [];
 
-  void getData()async{
+  int _currentIdx = 0;
+
+  void getData() async {
     final data = await getStatusData(int.parse(widget.userId));
     setState(() {
-      _url = data["stories"][1];
+      _urls = data["stories"];
+    });
+  }
+
+  void nextStatus() {
+    final lastIdx = _urls.length - 1 ;
+
+    setState(() {
+      _currentIdx = _currentIdx < lastIdx ? _currentIdx + 1 : 0;
     });
   }
 
@@ -30,10 +40,13 @@ class _StatusViewState extends State<StatusView> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Center(child: Image.network(_url)),
+        GestureDetector(
+          onTap: () {
+            nextStatus();
+          },
+          child: StatusViewCard(url: _urls[_currentIdx]),
+        )
       ],
     );
   }
-
-  }
-
+}

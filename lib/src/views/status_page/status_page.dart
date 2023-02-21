@@ -82,7 +82,7 @@ class _StatusPageState extends State<StatusPage> {
           Divider(
             color: onBackground.withOpacity(0.2),
           ),
-          Container(
+          Center(
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [

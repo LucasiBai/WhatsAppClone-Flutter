@@ -5,7 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:whatsapp_clone/src/routing/app_router.dart';
 import 'package:whatsapp_clone/src/views/camera_page/camera_page.dart';
 import 'package:whatsapp_clone/src/views/chat_detail_page/chat_detail_page.dart';
-import 'package:whatsapp_clone/src/views/status_page/status_view.dart';
+import 'package:whatsapp_clone/src/views/status_page/status_view/status_view.dart';
 
 class Routes {
   static final GoRouter _router = GoRouter(routes: <RouteBase>[
