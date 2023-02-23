@@ -7,26 +7,23 @@ class ChatsPage extends StatefulWidget {
 
   @override
   State<ChatsPage> createState() => _ChatsPageState();
-
 }
 
 class _ChatsPageState extends State<ChatsPage> {
   List _chatData = [];
 
-  void _getChatsData() async{
+  void _getChatsData() async {
     final data = await getData();
 
     setState(() {
       _chatData = data;
     });
   }
-  
+
   @override
   Widget build(BuildContext context) {
     _getChatsData();
-    return Container(
-      color: Theme.of(context).colorScheme.background,
-        child: ListView(children: _getChats(_chatData)));
+    return ListView(children: _getChats(_chatData));
   }
 
   List<ChatCard> _getChats(List chatData) {
@@ -45,4 +42,3 @@ class _ChatsPageState extends State<ChatsPage> {
     return chatList;
   }
 }
-

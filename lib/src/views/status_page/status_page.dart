@@ -40,82 +40,79 @@ class _StatusPageState extends State<StatusPage> {
         fontWeight: AppTexts.mdWeight,
         fontSize: AppTexts.mdSize);
 
-    return Container(
-      color: theme.colorScheme.background,
-      child: ListView(
-        children: [
-          MyStatusCard(
-            onTap: () {
-              goToRoute(context, "/camera");
-            },
+    return ListView(
+      children: [
+        MyStatusCard(
+          onTap: () {
+            goToRoute(context, "/camera");
+          },
+        ),
+        if (_getCards()["notViewed"].length == 0 &&
+            _getCards()["viewed"].length == 0)
+          Padding(
+            padding: const EdgeInsets.fromLTRB(
+                AppPaddings.l, AppPaddings.sm, AppPaddings.l, AppPaddings.xl),
+            child: Text(
+              "No hay estados recientes.",
+              style: textColor,
+            ),
           ),
-          if (_getCards()["notViewed"].length == 0 &&
-              _getCards()["viewed"].length == 0)
-            Padding(
-              padding: const EdgeInsets.fromLTRB(
-                  AppPaddings.l, AppPaddings.sm, AppPaddings.l, AppPaddings.xl),
-              child: Text(
-                "No hay estados recientes.",
-                style: textColor,
-              ),
+        if (_getCards()["notViewed"].length > 0)
+          Padding(
+            padding: const EdgeInsets.symmetric(
+                vertical: AppPaddings.sm, horizontal: AppPaddings.l),
+            child: Text(
+              "Recientes",
+              style: textColor,
             ),
-          if (_getCards()["notViewed"].length > 0)
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                  vertical: AppPaddings.sm, horizontal: AppPaddings.l),
-              child: Text(
-                "Recientes",
-                style: textColor,
-              ),
-            ),
-          ..._getCards()["notViewed"],
-          if (_getCards()["viewed"].length > 0)
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                  vertical: AppPaddings.sm, horizontal: AppPaddings.l),
-              child: Text(
-                "Vistos",
-                style: textColor,
-              ),
-            ),
-          ..._getCards()["viewed"],
-          Divider(
-            color: onBackground.withOpacity(0.2),
           ),
-          Center(
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 0, AppPaddings.sm, 0),
-                  child: Icon(
-                    AppIcons.lockIcon,
-                    size: AppIcons.mdSize,
-                    color: onBackground.withOpacity(0.5),
-                  ),
+        ..._getCards()["notViewed"],
+        if (_getCards()["viewed"].length > 0)
+          Padding(
+            padding: const EdgeInsets.symmetric(
+                vertical: AppPaddings.sm, horizontal: AppPaddings.l),
+            child: Text(
+              "Vistos",
+              style: textColor,
+            ),
+          ),
+        ..._getCards()["viewed"],
+        Divider(
+          color: onBackground.withOpacity(0.2),
+        ),
+        Center(
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(0, 0, AppPaddings.sm, 0),
+                child: Icon(
+                  AppIcons.lockIcon,
+                  size: AppIcons.mdSize,
+                  color: onBackground.withOpacity(0.5),
                 ),
-                RichText(
-                    textAlign: TextAlign.center,
-                    text: TextSpan(
-                        style: textColor.copyWith(
-                            fontSize: AppTexts.mdSize,
-                            fontWeight: AppTexts.mdWeight),
-                        children: [
-                          const TextSpan(
-                              text: "Tus actualizaciones de estado están "),
-                          TextSpan(
-                            text: "cifradas de extremo a extremo.",
-                            style: textColor.copyWith(
-                                color: theme.colorScheme.secondary,
-                                fontSize: AppTexts.mdSize,
-                                fontWeight: AppTexts.mdWeight),
-                          )
-                        ])),
-              ],
-            ),
-          )
-        ],
-      ),
+              ),
+              RichText(
+                  textAlign: TextAlign.center,
+                  text: TextSpan(
+                      style: textColor.copyWith(
+                          fontSize: AppTexts.mdSize,
+                          fontWeight: AppTexts.mdWeight),
+                      children: [
+                        const TextSpan(
+                            text: "Tus actualizaciones de estado están "),
+                        TextSpan(
+                          text: "cifradas de extremo a extremo.",
+                          style: textColor.copyWith(
+                              color: theme.colorScheme.secondary,
+                              fontSize: AppTexts.mdSize,
+                              fontWeight: AppTexts.mdWeight),
+                        )
+                      ])),
+            ],
+          ),
+        )
+      ],
     );
   }
 

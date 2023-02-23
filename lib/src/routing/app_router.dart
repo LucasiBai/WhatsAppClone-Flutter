@@ -24,6 +24,7 @@ class _AppRouterState extends State<AppRouter>
     return DefaultTabController(
       length: 4,
       child: Scaffold(
+        backgroundColor: Theme.of(context).colorScheme.background,
         appBar: AppBar(
           title: const Text("WhatsApp"),
           actions: [

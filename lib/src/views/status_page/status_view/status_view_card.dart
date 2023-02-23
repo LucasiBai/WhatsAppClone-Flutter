@@ -7,10 +7,13 @@ class StatusViewCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Image.network(
-        url,
-      ),
-    );
+    return Column(children: [
+      Expanded(
+        child: Image.network(
+          url,
+          fit: BoxFit.contain,
+        ),
+      )
+    ]);
   }
 }
