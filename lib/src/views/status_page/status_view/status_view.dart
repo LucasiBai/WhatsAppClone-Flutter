@@ -22,13 +22,18 @@ class _StatusViewState extends State<StatusView> {
     final data = await getStatusData(int.parse(widget.userId));
     setState(() {
       _contactData = {"image": data["contactImg"], "name": data["contactName"]};
-      for (final url in data["stories"]) {
-        _contactStories.add(
-          StoryItem.pageImage(
-            url: url,
-            controller: controller,
-          ),
-        );
+      for (final story in data["stories"]) {
+        if (story["type"] == "photo") {
+          _contactStories.add(
+            StoryItem.pageImage(
+                url: story["media"],
+                controller: controller,
+                caption: story["text"]),
+          );
+        } else {
+          _contactStories.add(StoryItem.text(
+              title: story["text"], backgroundColor: Colors.blue));
+        }
       }
     });
   }

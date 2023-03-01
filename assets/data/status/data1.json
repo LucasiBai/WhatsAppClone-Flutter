@@ -3,8 +3,16 @@
   "contactName": "Mercado Libre",
   "contactImg": "https://blog.saleslayer.com/hubfs/mercado-libre-logo.jpg",
   "stories": [
-    "https://i.ytimg.com/vi/bWf43d8vIpE/maxresdefault.jpg",
-    "https://pbs.twimg.com/media/FYoC5uKWYAI7FME?format=jpg&name=medium"
+    {
+      "type": "photo",
+      "media":"https://i.ytimg.com/vi/bWf43d8vIpE/maxresdefault.jpg",
+      "text": "¡Compra en Mercado Libre!"
+    },
+    {
+      "type": "photo",
+      "media":"https://pbs.twimg.com/media/FYoC5uKWYAI7FME?format=jpg&name=medium",
+      "text": ""
+    }
   ],
   "lastModification": "Ayer 20:32",
   "viewed": false
