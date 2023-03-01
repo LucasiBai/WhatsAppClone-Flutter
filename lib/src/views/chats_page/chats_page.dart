@@ -11,6 +11,7 @@ class ChatsPage extends StatefulWidget {
 
 class _ChatsPageState extends State<ChatsPage> {
   List _chatData = [];
+  List _selectedChats = [];
 
   void _getChatsData() async {
     final data = await getData();
@@ -31,6 +32,10 @@ class _ChatsPageState extends State<ChatsPage> {
 
     for (final chat in chatData) {
       chatList.add(ChatCard(
+          onLongPress: (){
+            _selectChat(chat["id"]);
+          },
+          selected: _selectedChats.contains(chat["id"]),
           chatId: chat["id"],
           contact: chat["contact"],
           time: chat["message"]["time"],
@@ -40,5 +45,11 @@ class _ChatsPageState extends State<ChatsPage> {
     }
 
     return chatList;
+  }
+
+  _selectChat(chatId){
+    setState(() {
+      _selectedChats.add(chatId);
+    });
   }
 }

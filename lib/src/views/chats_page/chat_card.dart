@@ -9,6 +9,8 @@ class ChatCard extends StatelessWidget {
       required this.chatId,
       required this.contact,
       required this.time,
+      required this.onLongPress,
+      required this.selected,
       required this.imageUrl,
       required this.author,
       required this.message})
@@ -20,6 +22,8 @@ class ChatCard extends StatelessWidget {
   String message;
   final String time;
   final String imageUrl;
+  Function onLongPress;
+  final selected;
 
   @override
   Widget build(BuildContext context) {
@@ -30,49 +34,54 @@ class ChatCard extends StatelessWidget {
     TextStyle textColor = TextStyle(color: onBackground);
 
     return ListTile(
-      onTap: () {
-        goToRoute(context, "/chats/$chatId");
-      },
-      leading: ContactImage(
-        size: AppSizes.mdSize,
-        imageUrl: imageUrl,
-        onTap: () {},
-      ),
-      title: Text(
-        contact,
-        style: textColor,
-      ),
-      subtitle: Row(
-        children: [
-          author.toUpperCase() == "YOU"
-              ? Icon(
-                  AppIcons.checkIcon,
-                  size: AppIcons.mdSize,
-                  color: onBackground.withOpacity(0.5),
-                )
-              : const SizedBox(),
-          Container(
-            constraints: const BoxConstraints(maxWidth: 220),
-            child: RichText(
-              overflow: TextOverflow.ellipsis,
-              text: TextSpan(
-                text: message,
-                style: textColor.copyWith(color: onBackground.withOpacity(0.5)),
-              ),
-            ),
-          ),
-        ],
-      ),
-      trailing: Padding(
-        padding: AppPaddings.mdVer,
-        child: Column(
+        onLongPress: (){
+          onLongPress();
+        },
+      selected: selected,
+      selectedTileColor: onBackground.withOpacity(0.05),
+        onTap: () {
+          goToRoute(context, "/chats/$chatId");
+        },
+        leading: ContactImage(
+          size: AppSizes.mdSize,
+          imageUrl: imageUrl,
+          onTap: () {},
+        ),
+        title: Text(
+          contact,
+          style: textColor,
+        ),
+        subtitle: Row(
           children: [
-            Text(
-              time,
-              style: textColor,
+            author.toUpperCase() == "YOU"
+                ? Icon(
+                    AppIcons.checkIcon,
+                    size: AppIcons.mdSize,
+                    color: onBackground.withOpacity(0.5),
+                  )
+                : const SizedBox(),
+            Container(
+              constraints: const BoxConstraints(maxWidth: 220),
+              child: RichText(
+                overflow: TextOverflow.ellipsis,
+                text: TextSpan(
+                  text: message,
+                  style: textColor.copyWith(color: onBackground.withOpacity(0.5)),
+                ),
+              ),
             ),
           ],
         ),
+        trailing: Padding(
+          padding: AppPaddings.mdVer,
+          child: Column(
+            children: [
+              Text(
+                time,
+                style: textColor,
+              ),
+            ],
+          ),
       ),
     );
   }

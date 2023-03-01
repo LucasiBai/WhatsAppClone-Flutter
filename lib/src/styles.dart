@@ -27,10 +27,9 @@ class AppIcons {
   static const double lSize = 20;
   static const double xlSize = 25;
   static const double xxlSize = 60;
-
 }
 
-class AppTexts{
+class AppTexts {
   //weights
   static const FontWeight smWeight = FontWeight.w300;
   static const FontWeight mdWeight = FontWeight.w500;
@@ -44,7 +43,7 @@ class AppTexts{
   static const double xxlSize = 25;
 }
 
-class AppSizes{
+class AppSizes {
   static const double smSize = 15;
   static const double mdSize = 25;
   static const double lSize = 35;
@@ -59,7 +58,7 @@ class AppContraints {
   static const double xlSize = 400;
 }
 
-class AppPaddings{
+class AppPaddings {
   // Values
   static const double sm = 5;
   static const double md = 10;
@@ -78,7 +77,6 @@ class AppPaddings{
   static const EdgeInsets lHor = EdgeInsets.symmetric(horizontal: l);
   static const EdgeInsets xlHor = EdgeInsets.symmetric(horizontal: xl);
 
-
   // Vertical
   static const EdgeInsets smVer = EdgeInsets.symmetric(vertical: sm);
   static const EdgeInsets mdVer = EdgeInsets.symmetric(vertical: md);
@@ -92,7 +90,7 @@ class AppPaddings{
   static const EdgeInsets xlLeft = EdgeInsets.fromLTRB(xl, 0, 0, 0);
 }
 
-class AppBorderRadius{
+class AppBorderRadius {
   static const double sm = 5;
   static const double md = 10;
   static const double l = 15;
@@ -102,4 +100,18 @@ class AppBorderRadius{
   static BorderRadius mdAll = BorderRadius.circular(md);
   static BorderRadius lAll = BorderRadius.circular(l);
   static BorderRadius xlAll = BorderRadius.circular(xl);
+}
+
+class AppColors {
+  static const Map colors = {
+    "blue": blue,
+    "red": red,
+    "green": green,
+    "yellow": yellow
+  };
+
+  static const Color blue = Colors.blueAccent;
+  static const Color red = Colors.redAccent;
+  static const Color green = Colors.green;
+  static const Color yellow = Colors.yellow;
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:story_view/story_view.dart';
 
 import 'package:whatsapp_clone/src/services/data_service.dart';
+import 'package:whatsapp_clone/src/styles.dart';
 import 'package:whatsapp_clone/src/views/status_page/status_view/status_view_card.dart';
 
 class StatusView extends StatefulWidget {
@@ -23,17 +24,7 @@ class _StatusViewState extends State<StatusView> {
     setState(() {
       _contactData = {"image": data["contactImg"], "name": data["contactName"]};
       for (final story in data["stories"]) {
-        if (story["type"] == "photo") {
-          _contactStories.add(
-            StoryItem.pageImage(
-                url: story["media"],
-                controller: controller,
-                caption: story["text"]),
-          );
-        } else {
-          _contactStories.add(StoryItem.text(
-              title: story["text"], backgroundColor: Colors.blue));
-        }
+        _contactStories.add(_getStoryItem(story));
       }
     });
   }
@@ -55,5 +46,16 @@ class _StatusViewState extends State<StatusView> {
         contactData: _contactData,
       )),
     );
+  }
+
+  StoryItem _getStoryItem(data) {
+    if (data["type"] == "photo") {
+      return StoryItem.pageImage(
+          url: data["media"], controller: controller, caption: data["text"]);
+    } else {
+      return StoryItem.text(
+          title: data["text"],
+          backgroundColor: AppColors.colors[data["color"]]);
+    }
   }
 }
