@@ -58,6 +58,7 @@ class StatusCard extends StatelessWidget {
               ],
         strokeWidth: 2,
         child: ContactImage(
+          hasIcon: false,
           size: borderRadius ,
           imageUrl: statusData["contactImg"],
           onTap: () {},

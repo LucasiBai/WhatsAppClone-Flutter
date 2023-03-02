@@ -64,6 +64,7 @@ class StatusViewCard extends StatelessWidget {
                       padding: const EdgeInsets.all(1),
                       margin: const EdgeInsets.fromLTRB(0, 0, AppPaddings.md, 0),
                       child: ContactImage(
+                        hasIcon: false,
                           onTap: () {},
                           size: AppSizes.smSize,
                           imageUrl: contactData["image"])),

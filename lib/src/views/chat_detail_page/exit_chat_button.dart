@@ -26,6 +26,7 @@ class ExitChatButton extends StatelessWidget {
               size: AppIcons.lSize,
             ),
             ContactImage(
+              hasIcon: false,
               onTap: () {},
               imageUrl: contactImg,
               size: AppSizes.smSize,

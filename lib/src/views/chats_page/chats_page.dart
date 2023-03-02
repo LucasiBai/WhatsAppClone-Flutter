@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp_clone/src/services/data_service.dart';
+import 'package:whatsapp_clone/src/services/routing_service.dart';
 import 'package:whatsapp_clone/src/views/chats_page/chat_card.dart';
 
 class ChatsPage extends StatefulWidget {
@@ -32,7 +33,14 @@ class _ChatsPageState extends State<ChatsPage> {
 
     for (final chat in chatData) {
       chatList.add(ChatCard(
-          onLongPress: (){
+          onTap: () {
+            if (_selectedChats.length > 0) {
+              _selectChat(chat["id"]);
+            } else {
+              goToRoute(context, "/chats/${chat["id"]}");
+            }
+          },
+          onLongPress: () {
             _selectChat(chat["id"]);
           },
           selected: _selectedChats.contains(chat["id"]),
@@ -47,7 +55,7 @@ class _ChatsPageState extends State<ChatsPage> {
     return chatList;
   }
 
-  _selectChat(chatId){
+  _selectChat(chatId) {
     setState(() {
       _selectedChats.add(chatId);
     });

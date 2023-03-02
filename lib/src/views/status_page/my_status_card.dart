@@ -19,19 +19,14 @@ class MyStatusCard extends StatelessWidget {
       onTap: () {
         onTap();
       },
-      leading: Stack(children: [
-        ContactImage(
-          size: AppSizes.mdSize,
-          imageUrl:
-              "https://www.rockandpop.cl/wp-content/uploads/2022/05/tom-holland-serie-1.jpg",
-          onTap: () {},
-        ),
-        Positioned(
-          left: 32,
-          top: 30,
-          child: _addButton(theme),
-        )
-      ]),
+      leading:ContactImage(
+        hasIcon: true,
+        size: AppSizes.mdSize,
+        imageUrl: "https://cdn.cnn.com/cnnnext/dam/assets/211214174110-tom-holland-super-169.jpg",
+        onTap: (){},
+        icon: AppIcons.plusIcon,
+
+      ),
       title: Text(
         "Mi estado",
         style: textColor,
@@ -43,24 +38,5 @@ class MyStatusCard extends StatelessWidget {
     );
   }
 
-  Widget _addButton(theme) {
-    return Container(
-      padding: const EdgeInsets.all(2),
-      decoration: BoxDecoration(
-        borderRadius: AppBorderRadius.mdAll,
-        color: theme.colorScheme.background,
-      ),
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: AppBorderRadius.mdAll,
-          color: theme.colorScheme.secondary,
-        ),
-        child: Icon(
-          AppIcons.plusIcon,
-          color: theme.colorScheme.onSecondary,
-          size: AppIcons.mdSize,
-        ),
-      ),
-    );
-  }
+
 }

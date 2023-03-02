@@ -28,9 +28,11 @@ class SelectableChatBubble extends StatelessWidget {
         onTap(message);
       },
       child: Stack(children: [
-        Align(
-          alignment: ownMessage ? Alignment.centerRight : Alignment.centerLeft,
-          child: ChatBubble(ownMessage: ownMessage, message: message),
+        Row(
+          mainAxisSize: MainAxisSize.max,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: ownMessage ? MainAxisAlignment.end : MainAxisAlignment.start,
+          children: [ChatBubble(ownMessage: ownMessage, message: message),]
         ),
         if (selected)
           Container(
