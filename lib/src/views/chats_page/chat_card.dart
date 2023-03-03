@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp_clone/src/_widgets/contact_image.dart';
+import 'package:whatsapp_clone/src/services/routing_service.dart';
 import 'package:whatsapp_clone/src/styles.dart';
 
 class ChatCard extends StatelessWidget {
@@ -34,58 +35,79 @@ class ChatCard extends StatelessWidget {
 
     TextStyle textColor = TextStyle(color: onBackground);
 
-    return ListTile(
-      onLongPress: () {
-        onLongPress();
-      },
-      selected: selected,
-      selectedTileColor: onBackground.withOpacity(0.05),
-      onTap: () {
-        onTap();
-      },
-      leading: ContactImage(
-        hasIcon: selected,
-        size: AppSizes.mdSize,
-        imageUrl: imageUrl,
-        onTap: () {},
-        icon: AppIcons.checkIcon,
-      ),
-      title: Text(
-        contact,
-        style: textColor,
-      ),
-      subtitle: Row(
-        children: [
-          author.toUpperCase() == "YOU"
-              ? Icon(
-                  AppIcons.checkIcon,
-                  size: AppIcons.mdSize,
-                  color: onBackground.withOpacity(0.5),
-                )
-              : const SizedBox(),
-          Container(
-            constraints: const BoxConstraints(maxWidth: 220),
-            child: RichText(
-              overflow: TextOverflow.ellipsis,
-              text: TextSpan(
-                text: message,
-                style: textColor.copyWith(color: onBackground.withOpacity(0.5)),
-              ),
-            ),
+    return Stack(children: [
+      ListTile(
+        onLongPress: () {
+          onLongPress();
+        },
+        selected: selected,
+        selectedTileColor: onBackground.withOpacity(0.05),
+        onTap: () {
+          onTap();
+        },
+        leading: Hero(
+          tag: chatId,
+          child: ContactImage(
+            hasIcon: selected,
+            size: AppSizes.mdSize,
+            imageUrl: imageUrl,
+            onTap: () {},
+            icon: AppIcons.checkIcon,
           ),
-        ],
-      ),
-      trailing: Padding(
-        padding: AppPaddings.mdVer,
-        child: Column(
+        ),
+        title: Text(
+          contact,
+          style: textColor,
+        ),
+        subtitle: Row(
           children: [
-            Text(
-              time,
-              style: textColor,
+            author.toUpperCase() == "YOU"
+                ? Icon(
+                    AppIcons.checkIcon,
+                    size: AppIcons.mdSize,
+                    color: onBackground.withOpacity(0.5),
+                  )
+                : const SizedBox(),
+            Container(
+              constraints: const BoxConstraints(maxWidth: 220),
+              child: RichText(
+                overflow: TextOverflow.ellipsis,
+                text: TextSpan(
+                  text: message,
+                  style:
+                      textColor.copyWith(color: onBackground.withOpacity(0.5)),
+                ),
+              ),
             ),
           ],
         ),
+        trailing: Padding(
+          padding: AppPaddings.mdVer,
+          child: Column(
+            children: [
+              Text(
+                time,
+                style: textColor,
+              ),
+            ],
+          ),
+        ),
       ),
-    );
+      Align(
+        alignment: Alignment.centerLeft,
+        child: GestureDetector(
+          onTap: () {
+            goToRoute(context, "/contactImage/$chatId");
+          },
+          child: Container(
+            margin: const EdgeInsets.symmetric(
+                vertical: AppPaddings.md, horizontal: AppPaddings.l),
+            color: Colors.red.withOpacity(0),
+            width: AppSizes.xxlSize,
+            height: AppSizes.xxlSize,
+          ),
+        ),
+      )
+    ]);
   }
 }

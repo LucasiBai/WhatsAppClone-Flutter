@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
+import 'package:whatsapp_clone/src/_widgets/contact_image_view.dart';
 
 import 'package:whatsapp_clone/src/routing/app_router.dart';
 import 'package:whatsapp_clone/src/views/camera_page/camera_page.dart';
@@ -33,6 +34,13 @@ class Routes {
           builder: (BuildContext context, GoRouterState state) {
             final userId = state.params["userId"];
             return StatusView(userId: userId);
+          },
+        ),
+        GoRoute(
+          path: 'contactImage/:userId',
+          builder: (BuildContext context, GoRouterState state) {
+            final userId = state.params["userId"];
+            return ContactImageView(userId: userId);
           },
         ),
       ],
