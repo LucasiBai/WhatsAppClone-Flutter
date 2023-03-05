@@ -7,9 +7,10 @@ import 'package:whatsapp_clone/src/services/routing_service.dart';
 import 'package:whatsapp_clone/src/styles.dart';
 
 class StatusCard extends StatelessWidget {
-  const StatusCard({Key? key, this.statusData}) : super(key: key);
+  StatusCard({Key? key, this.statusData, required this.onLongPress}) : super(key: key);
 
   final statusData;
+  Function onLongPress;
 
   double colorWidth(double radius, int statusCount, double separation) {
     return ((2 * pi * radius) - (statusCount * separation)) / statusCount;
@@ -39,6 +40,9 @@ class StatusCard extends StatelessWidget {
     return ListTile(
       onTap: () {
         goToRoute(context, "/status/${statusData["id"]}");
+      },
+      onLongPress: (){
+        onLongPress();
       },
       leading: DottedBorder(
         color: !statusData["viewed"]

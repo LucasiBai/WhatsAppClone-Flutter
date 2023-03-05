@@ -3,6 +3,7 @@ import 'package:whatsapp_clone/src/services/data_service.dart';
 import 'package:whatsapp_clone/src/services/routing_service.dart';
 
 import 'package:whatsapp_clone/src/styles.dart';
+import 'package:whatsapp_clone/src/views/status_page/mute_dialog.dart';
 import 'package:whatsapp_clone/src/views/status_page/my_status_card.dart';
 import 'package:whatsapp_clone/src/views/status_page/status_card.dart';
 
@@ -27,6 +28,12 @@ class _StatusPageState extends State<StatusPage> {
     setState(() {
       _feedList = data;
     });
+  }
+
+  void _showMuteDialog(BuildContext context, status) {
+    showDialog(
+        context: context,
+        builder: (context) => MuteDialog(name: status["contactName"]));
   }
 
   @override
@@ -122,6 +129,9 @@ class _StatusPageState extends State<StatusPage> {
 
     for (final status in _feedList) {
       final widget = StatusCard(
+        onLongPress: () {
+          _showMuteDialog(context, status);
+        },
         statusData: status,
       );
       status["viewed"]

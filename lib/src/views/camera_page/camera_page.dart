@@ -74,10 +74,11 @@ class _CameraState extends State<Camera> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       body: SafeArea(
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 80),
-          color: _isShooting ? Colors.white.withOpacity(0.8) : Colors.black,
+          color: _isShooting ? Colors.white.withOpacity(0.8) : Colors.black.withOpacity(0),
           child: Stack(children: [
             Column(
               children: [
