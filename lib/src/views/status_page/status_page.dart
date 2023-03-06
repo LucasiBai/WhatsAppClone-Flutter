@@ -33,7 +33,17 @@ class _StatusPageState extends State<StatusPage> {
   void _showMuteDialog(BuildContext context, status) {
     showDialog(
         context: context,
-        builder: (context) => MuteDialog(name: status["contactName"]));
+        builder: (context) => MuteDialog(
+              name: status["contactName"],
+              buttons: [
+                TextButton(
+                    onPressed: () {
+                      goBack(context);
+                    },
+                    child: const Text("Cancelar")),
+                TextButton(onPressed: () {}, child: const Text("Silenciar"))
+              ],
+            ));
   }
 
   @override

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp_clone/src/_widgets/contact_image.dart';
-import 'package:whatsapp_clone/src/services/routing_service.dart';
 import 'package:whatsapp_clone/src/styles.dart';
+import 'package:whatsapp_clone/src/views/chats_page/contact_dialog.dart';
 
 class ChatCard extends StatelessWidget {
   ChatCard(
@@ -27,6 +27,13 @@ class ChatCard extends StatelessWidget {
   Function onTap;
   final selected;
 
+  void _showContactDialog(BuildContext context, userId, userImg){
+    showDialog(context: context, builder: (context)=> ContactDialog(
+      userId: userId,
+      userImg: userImg,
+    ));
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -46,7 +53,7 @@ class ChatCard extends StatelessWidget {
           onTap();
         },
         leading: Hero(
-          tag: chatId,
+          tag: "contact-$chatId",
           child: ContactImage(
             hasIcon: selected,
             size: AppSizes.mdSize,
@@ -97,7 +104,7 @@ class ChatCard extends StatelessWidget {
         alignment: Alignment.centerLeft,
         child: GestureDetector(
           onTap: () {
-            goToRoute(context, "/contactImage/$chatId");
+            _showContactDialog(context, chatId, imageUrl);
           },
           child: Container(
             margin: const EdgeInsets.symmetric(
