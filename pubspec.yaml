@@ -36,6 +36,7 @@ flutter:
     - assets/data/chat/
     - assets/data/status/
     - assets/images/
+    - assets/images/contacts/
 
 
 

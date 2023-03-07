@@ -22,7 +22,7 @@ class _StatusViewState extends State<StatusView> {
   void getData() async {
     final data = await getStatusData(int.parse(widget.userId));
     setState(() {
-      _contactData = {"image": data["contactImg"], "name": data["contactName"]};
+      _contactData = {"id":data["contactId"],"image": data["contactImg"], "name": data["contactName"]};
       for (final story in data["stories"]) {
         _contactStories.add(_getStoryItem(story));
       }

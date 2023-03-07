@@ -57,17 +57,24 @@ class StatusViewCard extends StatelessWidget {
                         AppIcons.backIcon,
                         color: Colors.white,
                       )),
-                  Container(
-                      decoration: BoxDecoration(
-                          borderRadius: AppBorderRadius.xlAll,
-                          color: Colors.white),
-                      padding: const EdgeInsets.all(1),
-                      margin: const EdgeInsets.fromLTRB(0, 0, AppPaddings.md, 0),
-                      child: ContactImage(
-                        hasIcon: false,
-                          onTap: () {},
-                          size: AppSizes.smSize,
-                          imageUrl: contactData["image"])),
+                  GestureDetector(
+                    onTap: (){
+                      goToRoute(context, "/contactImage/${contactData["id"]}");
+                    },
+                    child: Container(
+                        decoration: BoxDecoration(
+                            borderRadius: AppBorderRadius.xlAll,
+                            color: Colors.white),
+                        padding: const EdgeInsets.all(1),
+                        margin: const EdgeInsets.fromLTRB(0, 0, AppPaddings.md, 0),
+                        child: ContactImage(
+                          hasIcon: false,
+                            onTap: () {
+                            print("Hola");
+                            },
+                            size: AppSizes.smSize,
+                            imageUrl: contactData["image"])),
+                  ),
                   Text(
                     contactData["name"],
                     style: TextStyle(color: Colors.white),

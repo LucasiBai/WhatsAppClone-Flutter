@@ -1,5 +1,6 @@
 {
   "id": 3,
+  "contactId": 2,
   "contactName": "Jim Halpert",
   "contactImg":  "https://i.pinimg.com/736x/e1/36/11/e136114cd3bdc194a49e6314b6faf636--jim-halpert-beets.jpg",
   "stories": [

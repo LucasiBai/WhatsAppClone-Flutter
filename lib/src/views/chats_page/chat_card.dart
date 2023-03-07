@@ -31,6 +31,7 @@ class ChatCard extends StatelessWidget {
     showDialog(context: context, builder: (context)=> ContactDialog(
       userId: userId,
       userImg: userImg,
+      contactName: contact,
     ));
   }
 

@@ -31,6 +31,8 @@ class _StatusPageState extends State<StatusPage> {
   }
 
   void _showMuteDialog(BuildContext context, status) {
+    final TextStyle textStyle = TextStyle( color: Theme.of(context).colorScheme.secondary);
+
     showDialog(
         context: context,
         builder: (context) => MuteDialog(
@@ -40,8 +42,8 @@ class _StatusPageState extends State<StatusPage> {
                     onPressed: () {
                       goBack(context);
                     },
-                    child: const Text("Cancelar")),
-                TextButton(onPressed: () {}, child: const Text("Silenciar"))
+                    child:  Text("Cancelar",style: textStyle)),
+                TextButton(onPressed: () {}, child:  Text("Silenciar",style: textStyle,))
               ],
             ));
   }

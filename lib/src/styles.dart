@@ -20,6 +20,8 @@ class AppIcons {
   static const IconData flashOffIcon = Icons.flash_off;
   static const IconData plusIcon = Icons.add;
   static const IconData lockIcon = Icons.lock;
+  static const IconData chatIcon = Icons.chat;
+  static const IconData infoIcon = Icons.info_outline;
 
   //Sizes
   static const double smSize = 10;
