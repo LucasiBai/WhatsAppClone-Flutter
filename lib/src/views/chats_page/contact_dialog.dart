@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:whatsapp_clone/src/_widgets/custom_icon_button.dart';
+import 'package:whatsapp_clone/src/_widgets/custom_icon_button.dart';
+import 'package:whatsapp_clone/src/_widgets/custom_icon_button.dart';
 import 'package:whatsapp_clone/src/services/routing_service.dart';
 import 'package:whatsapp_clone/src/styles.dart';
 
@@ -14,22 +17,23 @@ class ContactDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
 
+    const alertPadding = EdgeInsets.all(0);
+
     return AlertDialog(
-        backgroundColor: Colors.white.withOpacity(0),
+        backgroundColor: colorScheme.background,
+        contentPadding: alertPadding,
         content: Container(
-          color: colorScheme.background,
           child: GestureDetector(
             onTap: () {
               goToRoute(context, "/contactImage/$userId");
             },
-            child:
-            Column(mainAxisSize: MainAxisSize.min, children: [
+            child: Column(mainAxisSize: MainAxisSize.min, children: [
               Stack(children: [
                 Hero(
                     tag: "contact-$userId",
                     child: SizedBox(
-                      width: 270,
-                      height: 270,
+                      width: 290,
+                      height: 290,
                       child: Image.network(
                         userImg,
                         fit: BoxFit.cover,
@@ -50,36 +54,41 @@ class ContactDialog extends StatelessWidget {
                   ),
                 )
               ]),
-              Row(
+              Padding(
+                padding: AppPaddings.smAll,
+                child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    IconButton(
-                        onPressed: () {},
+                    CustomIconButton(
+                        onTap: () {
+                          goToRoute(context, "/chats/${userId}");
+                        },
                         icon: Icon(
                           AppIcons.chatIcon,
                           color: colorScheme.secondary,
                         )),
-                    IconButton(
-                        onPressed: () {},
+                    CustomIconButton(
+                        onTap: () {},
                         icon: Icon(
                           AppIcons.phoneIcon,
                           color: colorScheme.secondary,
                         )),
-                    IconButton(
-                        onPressed: () {},
+                    CustomIconButton(
+                        onTap: () {},
                         icon: Icon(
                           AppIcons.faceTimeIcon,
                           color: colorScheme.secondary,
                         )),
-                    IconButton(
-                        onPressed: () {},
+                    CustomIconButton(
+                        onTap: () {},
                         icon: Icon(
                           AppIcons.infoIcon,
                           color: colorScheme.secondary,
                         )),
                   ],
                 ),
-
+              ),
             ]),
           ),
         ));

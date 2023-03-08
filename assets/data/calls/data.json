@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "contactId": 3,
+    "contactName":"Dewey Wilkerson",
+    "contactImage":"https://imageresizer.static9.net.au/U6BsdWkdqh9DKo4gFFwDJHuSVko=/160x0:928x768/400x0/https%3A%2F%2Fprod.static9.net.au%2Ffs%2F733ecaab-640a-441a-98a7-39aa7c73ebe1"
+   , "date": "3 de marzo 14:28",
+    "receptor": "YOU"
+  },
+  {
+    "id": 2,
+    "contactId": 3,
+    "contactName":"Dewey Wilkerson",
+    "contactImage":"https://imageresizer.static9.net.au/U6BsdWkdqh9DKo4gFFwDJHuSVko=/160x0:928x768/400x0/https%3A%2F%2Fprod.static9.net.au%2Ffs%2F733ecaab-640a-441a-98a7-39aa7c73ebe1"
+  , "date": "3 de marzo 14:28",
+    "receptor": "YOU"
+  },
+  {
+    "id": 3,
+    "contactId": 3,
+    "contactName":"Dewey Wilkerson",
+    "contactImage":"https://imageresizer.static9.net.au/U6BsdWkdqh9DKo4gFFwDJHuSVko=/160x0:928x768/400x0/https%3A%2F%2Fprod.static9.net.au%2Ffs%2F733ecaab-640a-441a-98a7-39aa7c73ebe1"
+  , "date": "3 de marzo 14:29",
+    "receptor": "YOU"
+  },
+  {
+    "id": 4,
+    "contactId": 3,
+    "contactName":"Dewey Wilkerson",
+    "contactImage":"https://imageresizer.static9.net.au/U6BsdWkdqh9DKo4gFFwDJHuSVko=/160x0:928x768/400x0/https%3A%2F%2Fprod.static9.net.au%2Ffs%2F733ecaab-640a-441a-98a7-39aa7c73ebe1"
+  , "date": "3 de marzo 14:35",
+    "receptor": "CONTACT"
+  },
+  {
+    "id": 5,
+    "contactId": 2,
+    "contactName":"Jim Halpert",
+    "contactImage":"https://i.pinimg.com/736x/e1/36/11/e136114cd3bdc194a49e6314b6faf636--jim-halpert-beets.jpg"
+  , "date": "4 de marzo 22:55",
+    "receptor": "YOU"
+  },
+  {
+    "id": 6,
+    "contactId": 4,
+    "contactName":"Bruce Wayne",
+    "contactImage":"https://www.tiempox.com/u/fotografias/m/2022/3/5/f1280x720-24551_156226_5050.jpg"
+  , "date": "6 de marzo 13:32",
+    "receptor": "CONTACT"
+  }
+]

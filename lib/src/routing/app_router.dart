@@ -34,7 +34,8 @@ class _AppRouterState extends State<AppRouter>
                 },
                 icon: const Icon(AppIcons.cameraIcon)),
             IconButton(onPressed: () {}, icon: const Icon(AppIcons.searchIcon)),
-            IconButton(onPressed: () {}, icon: const Icon(AppIcons.optionsIcon)),
+            IconButton(
+                onPressed: () {}, icon: const Icon(AppIcons.optionsIcon)),
           ],
           backgroundColor: Theme.of(context).colorScheme.primary,
           bottom: buildNavBar(),

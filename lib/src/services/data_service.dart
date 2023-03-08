@@ -44,3 +44,8 @@ Future getStatusData(int chatID) async {
   final data = await rootBundle.loadString('assets/data/status/data$chatID.json');
   return jsonDecode(data);
 }
+
+Future<List> getCallList() async {
+  final data = await rootBundle.loadString('assets/data/calls/data.json');
+  return jsonDecode(data);
+}
