@@ -22,6 +22,8 @@ class AppIcons {
   static const IconData lockIcon = Icons.lock;
   static const IconData chatIcon = Icons.chat;
   static const IconData infoIcon = Icons.info_outline;
+  static const IconData callReceptorIcon = Icons.arrow_back;
+  static const IconData callEmitterIcon = Icons.arrow_forward;
 
   //Sizes
   static const double smSize = 10;

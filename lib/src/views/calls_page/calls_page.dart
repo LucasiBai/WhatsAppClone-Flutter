@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp_clone/src/services/data_service.dart';
+import 'package:whatsapp_clone/src/views/calls_page/call_contact_card.dart';
 
 class CallsPage extends StatefulWidget {
   const CallsPage({Key? key}) : super(key: key);
@@ -17,10 +18,10 @@ class _CallsPageState extends State<CallsPage> {
     getCalls();
   }
 
-  void getCalls() async{
+  void getCalls() async {
     final data = await getCallList();
     setState(() {
-      _callList= List.from(data.reversed);
+      _callList = List.from(data.reversed);
     });
   }
 
@@ -28,8 +29,13 @@ class _CallsPageState extends State<CallsPage> {
   Widget build(BuildContext context) {
     return ListView(
       children: [
-        for(final call in _callList)
-          Text(call["contactName"])
+        for (final call in _callList)
+          CallContactCard(
+            imageUrl: call["contactImage"],
+            name: call["contactName"],
+            date: call["date"],
+            receptor: {"pass": call["pass"], "receptor": call["receptor"]},
+          )
       ],
     );
   }
