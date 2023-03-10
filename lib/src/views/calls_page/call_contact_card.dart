@@ -41,7 +41,7 @@ class CallContactCard extends StatelessWidget {
           Icon(
             receptor["receptor"].toUpperCase() == "CONTACT"
                 ? AppIcons.callEmitterIcon
-                : AppIcons.callEmitterIcon,
+                : AppIcons.callReceptorIcon,
             color: iconColor,
           ),
           Text(

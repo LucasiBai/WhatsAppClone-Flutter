@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:whatsapp_clone/src/_widgets/section_label.dart';
 import 'package:whatsapp_clone/src/services/data_service.dart';
 import 'package:whatsapp_clone/src/services/routing_service.dart';
 
@@ -31,7 +32,8 @@ class _StatusPageState extends State<StatusPage> {
   }
 
   void _showMuteDialog(BuildContext context, status) {
-    final TextStyle textStyle = TextStyle( color: Theme.of(context).colorScheme.secondary);
+    final TextStyle textStyle =
+        TextStyle(color: Theme.of(context).colorScheme.secondary);
 
     showDialog(
         context: context,
@@ -42,8 +44,13 @@ class _StatusPageState extends State<StatusPage> {
                     onPressed: () {
                       goBack(context);
                     },
-                    child:  Text("Cancelar",style: textStyle)),
-                TextButton(onPressed: () {}, child:  Text("Silenciar",style: textStyle,))
+                    child: Text("Cancelar", style: textStyle)),
+                TextButton(
+                    onPressed: () {},
+                    child: Text(
+                      "Silenciar",
+                      style: textStyle,
+                    ))
               ],
             ));
   }
@@ -68,33 +75,14 @@ class _StatusPageState extends State<StatusPage> {
         ),
         if (_getCards()["notViewed"].length == 0 &&
             _getCards()["viewed"].length == 0)
-          Padding(
-            padding: const EdgeInsets.fromLTRB(
-                AppPaddings.l, AppPaddings.sm, AppPaddings.l, AppPaddings.xl),
-            child: Text(
-              "No hay estados recientes.",
-              style: textColor,
-            ),
-          ),
+          const Padding(
+              padding: EdgeInsets.fromLTRB(0, 0, 0, AppPaddings.sm),
+              child: SectionLabel(text: "No hay estados recientes.")),
         if (_getCards()["notViewed"].length > 0)
-          Padding(
-            padding: const EdgeInsets.symmetric(
-                vertical: AppPaddings.sm, horizontal: AppPaddings.l),
-            child: Text(
-              "Recientes",
-              style: textColor,
-            ),
-          ),
+          const SectionLabel(text: "Recientes"),
         ..._getCards()["notViewed"],
         if (_getCards()["viewed"].length > 0)
-          Padding(
-            padding: const EdgeInsets.symmetric(
-                vertical: AppPaddings.sm, horizontal: AppPaddings.l),
-            child: Text(
-              "Vistos",
-              style: textColor,
-            ),
-          ),
+          const SectionLabel(text: "Vistos"),
         ..._getCards()["viewed"],
         Divider(
           color: onBackground.withOpacity(0.2),
