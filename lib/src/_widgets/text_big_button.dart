@@ -7,6 +7,7 @@ class TextBigButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextButton(onPressed: (){onTap();}, child: child);
+    return TextButton(onPressed: (){onTap();}, child: child)
+    ;
   }
 }

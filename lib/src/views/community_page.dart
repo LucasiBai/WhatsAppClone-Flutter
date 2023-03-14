@@ -6,8 +6,12 @@ class CommunityPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final colorScheme = Theme.of(context).colorScheme;
+
     return ListView(
       children: [
+        Image.asset("assets/images/community.png"),
         Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -21,7 +25,7 @@ class CommunityPage extends StatelessWidget {
                   text:
                       "Organiza con facilidad tus grupos relacionados y envía avisos. Ahora tus comunidades, como vecindarios y escuelas, pueden tener su propio espacio.")
             ])),
-          TextBigButton(onTap: (){}, child: const Text("Iniciar tu comunidad"))
+          TextBigButton(onTap: (){}, child: Text("Iniciar tu comunidad",style: TextStyle(color: colorScheme.onSecondary),))
           ],
         )
       ],
