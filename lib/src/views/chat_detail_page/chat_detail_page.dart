@@ -67,6 +67,18 @@ class _ChatDetailState extends State<ChatDetail> {
     });
   }
 
+  void _sendMessage(int userId, String msg){
+    DateTime now = new DateTime.now();
+
+    setState(() {
+      _chatMessages.add({
+        "author": "YOU",
+        "content":msg,
+        "time": "${now.hour}:${now.minute}"
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -92,7 +104,10 @@ class _ChatDetailState extends State<ChatDetail> {
         ),
         Align(
           alignment: Alignment.bottomCenter,
-          child: ChatTextField(chatId: int.parse(widget.chatId),),
+          child: ChatTextField(
+            chatId: int.parse(widget.chatId),
+            onSend: _sendMessage,
+          ),
         )
       ]),
     );

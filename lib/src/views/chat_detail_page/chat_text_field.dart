@@ -4,9 +4,10 @@ import 'package:whatsapp_clone/src/services/data_service.dart';
 import 'package:whatsapp_clone/src/styles.dart';
 
 class ChatTextField extends StatefulWidget {
-  const ChatTextField({Key? key, required this.chatId}) : super(key: key);
+  const ChatTextField({Key? key, required this.chatId, required this.onSend}) : super(key: key);
 
   final int chatId;
+  final Function(int, String) onSend;
 
   @override
   State<ChatTextField> createState() => _ChatTextFieldState();
@@ -25,8 +26,9 @@ class _ChatTextFieldState extends State<ChatTextField> {
     });
   }
 
-  void _sendMessage()async{
-    addMessageTo(widget.chatId,_textController.text);
+  void _onSend(){
+    widget.onSend(widget.chatId, _textController.text);
+    _textController.clear();
   }
 
   @override
@@ -55,9 +57,7 @@ class _ChatTextFieldState extends State<ChatTextField> {
         )),
         _isChatOpen
             ? RoundedButton(
-                onTap: () {
-                  _sendMessage();
-                },
+                onTap: _onSend,
                 icon: const Icon(AppIcons.sendIcon),
               )
             : RoundedButton(
