@@ -87,36 +87,45 @@ class _StatusPageState extends State<StatusPage> {
         Divider(
           color: onBackground.withOpacity(0.2),
         ),
-        Center(
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Padding(
-                padding: const EdgeInsets.fromLTRB(0, 0, AppPaddings.sm, 0),
-                child: Icon(
-                  AppIcons.lockIcon,
-                  size: AppIcons.mdSize,
-                  color: onBackground.withOpacity(0.5),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: AppPaddings.md),
+          child: Center(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+               Icon(
+                    AppIcons.lockIcon,
+                    size: AppIcons.mdSize,
+                    color: onBackground.withOpacity(0.5),
+                  ),
+                const SizedBox(
+                  width: AppPaddings.sm,
                 ),
-              ),
-              RichText(
-                  textAlign: TextAlign.center,
-                  text: TextSpan(
-                      style: textColor.copyWith(
-                          fontSize: AppTexts.mdSize,
-                          fontWeight: AppTexts.mdWeight),
-                      children: [
-                        const TextSpan(
-                            text: "Tus actualizaciones de estado están "),
-                        TextSpan(
-                          text: "cifradas de extremo a extremo.",
+                Container(
+                  constraints: const BoxConstraints(
+                    maxWidth: 350
+                  ),
+                  child: RichText(
+                      textAlign: TextAlign.center,
+                      text: TextSpan(
                           style: textColor.copyWith(
-                              color: theme.colorScheme.secondary,
                               fontSize: AppTexts.mdSize,
                               fontWeight: AppTexts.mdWeight),
-                        )
-                      ])),
-            ],
+                          children: [
+                            const TextSpan(
+                                text: "Tus actualizaciones de estado están "),
+                            TextSpan(
+                              text: "cifradas de extremo a extremo.",
+                              style: textColor.copyWith(
+                                  color: theme.colorScheme.secondary,
+                                  fontSize: AppTexts.mdSize,
+                                  fontWeight: AppTexts.mdWeight),
+                            )
+                          ])),
+                ),
+              ],
+            ),
           ),
         )
       ],

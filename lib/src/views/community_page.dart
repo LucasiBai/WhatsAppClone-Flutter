@@ -14,13 +14,21 @@ class CommunityPage extends StatelessWidget {
 
     return ListView(
       children: [
-        Image.asset("assets/images/community.png"),
+        Container(
+          constraints: const BoxConstraints(
+            maxHeight: 200,
+            maxWidth: 300
+          ),
+          child: Image.asset(
+            "assets/images/community.png", fit: BoxFit.contain,),
+        ),
         Padding(
           padding: AppPaddings.mdHor,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               RichText(
+                textAlign: TextAlign.center,
                   text: TextSpan(children: [
                 TextSpan(
                     text: "Presentamos la función Comunidades",
@@ -28,18 +36,23 @@ class CommunityPage extends StatelessWidget {
                         standardTextStyle.copyWith(fontSize: AppTexts.xlSize, fontWeight: AppTexts.mdWeight))
               ])),
               const SizedBox(
-                height: AppPaddings.sm,
+                height: AppPaddings.md,
               ),
-              RichText(
-                  textAlign: TextAlign.center,
-                  text: TextSpan(children: [
-                    TextSpan(
-                        text:
-                            "Organiza con facilidad tus grupos relacionados y envía avisos. Ahora tus comunidades, como vecindarios y escuelas, pueden tener su propio espacio.",
-                        style: standardTextStyle)
-                  ])),
+              Container(
+                constraints: const BoxConstraints(
+                  maxWidth: 350
+                ),
+                child: RichText(
+                    textAlign: TextAlign.center,
+                    text: TextSpan(children: [
+                      TextSpan(
+                          text:
+                              "Organiza con facilidad tus grupos relacionados y envía avisos. Ahora tus comunidades, como vecindarios y escuelas, pueden tener su propio espacio.",
+                          style: standardTextStyle.copyWith(color: colorScheme.onBackground.withOpacity(0.7), fontSize: AppTexts.lSize))
+                    ])),
+              ),
               const SizedBox(
-                height: AppPaddings.sm,
+                height: AppPaddings.md,
               ),
               TextBigButton(onTap: () {}, text: "Iniciar tu comunidad")
             ],

@@ -22,8 +22,8 @@ class TextBigButton extends StatelessWidget {
           padding: const EdgeInsets.symmetric(
               horizontal: AppPaddings.l, vertical: AppPaddings.md),
           child: Text(
-            text,
-            style: TextStyle(color: colorScheme.onSecondary),
+            text.toUpperCase(),
+            style: TextStyle(color: colorScheme.background, fontSize: AppTexts.mdSize),
           )),
     );
   }

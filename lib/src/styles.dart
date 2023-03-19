@@ -43,8 +43,8 @@ class AppTexts {
   static const double smSize = 10;
   static const double mdSize = 12;
   static const double lSize = 15;
-  static const double xlSize = 20;
-  static const double xxlSize = 25;
+  static const double xlSize = 23;
+  static const double xxlSize = 30;
 }
 
 class AppSizes {
