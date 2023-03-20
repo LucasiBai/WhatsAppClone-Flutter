@@ -16,15 +16,19 @@ class BubbleTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ColorScheme colorScheme = Theme.of(context).colorScheme;
+    final TextStyle textStyle = TextStyle(color: colorScheme.onBackground);
 
     return Container(
+      padding: AppPaddings.mdHor,
       decoration: BoxDecoration(
           color: colorScheme.background, borderRadius: AppBorderRadius.xlAll),
       child: TextField(
         focusNode: _focus,
+        style: textStyle,
         decoration: InputDecoration(
+            border: const UnderlineInputBorder(borderSide: BorderSide.none),
             hintText: "Mensaje",
-            hintStyle: TextStyle(color: colorScheme.onBackground)),
+            hintStyle: textStyle,),
         controller: _textController,
       ),
     );

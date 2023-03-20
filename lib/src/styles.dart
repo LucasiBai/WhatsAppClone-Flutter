@@ -98,7 +98,7 @@ class AppBorderRadius {
   static const double sm = 5;
   static const double md = 10;
   static const double l = 15;
-  static const double xl = 20;
+  static const double xl = 30;
 
   static BorderRadius smAll = BorderRadius.circular(sm);
   static BorderRadius mdAll = BorderRadius.circular(md);

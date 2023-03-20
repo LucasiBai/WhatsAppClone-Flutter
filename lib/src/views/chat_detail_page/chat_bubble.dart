@@ -20,7 +20,7 @@ class ChatBubble extends StatelessWidget {
     TextStyle textColor = TextStyle(color: onBackground);
 
     return Container(
-      margin: AppPaddings.smAll,
+      margin: AppPaddings.smHor,
       constraints: const BoxConstraints(maxWidth: AppContraints.lSize),
       child: Card(
         color: !ownMessage
