@@ -1,3 +1,4 @@
+import 'package:custom_clippers/custom_clippers.dart';
 import 'package:flutter/material.dart';
 import 'package:whatsapp_clone/src/styles.dart';
 
@@ -20,14 +21,19 @@ class ChatBubble extends StatelessWidget {
     TextStyle textColor = TextStyle(color: onBackground);
 
     return Container(
-      margin: AppPaddings.smHor,
+      margin:  const EdgeInsets.symmetric( horizontal :AppPaddings.sm, vertical: AppPaddings.sm),
       constraints: const BoxConstraints(maxWidth: AppContraints.lSize),
-      child: Card(
-        color: !ownMessage
-            ? Theme.of(context).colorScheme.background
-            : Theme.of(context).colorScheme.secondary,
-        child: Padding(
-          padding: AppPaddings.mdAll,
+      child: ClipPath(
+        clipper: UpperNipMessageClipperTwo(
+            ownMessage ? MessageType.send : MessageType.receive,
+          nipHeight:AppPaddings.md,
+          nipWidth: AppPaddings.md
+        ),
+        child: Container(
+          color: !ownMessage
+              ? Theme.of(context).colorScheme.background
+              : Theme.of(context).colorScheme.secondary,
+          padding: const EdgeInsets.symmetric(vertical: AppPaddings.md, horizontal: AppPaddings.l),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
