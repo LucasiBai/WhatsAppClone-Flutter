@@ -29,8 +29,12 @@ class _ChatTextFieldState extends State<ChatTextField> {
   }
 
   void _onSend() {
-    widget.onSend(widget.chatId, _textController.text);
-    _textController.clear();
+    if(_textController.text.length > 0) {
+      widget.onSend(widget.chatId, _textController.text);
+      _textController.clear();
+    }
+      _focus.unfocus();
+
   }
 
   @override

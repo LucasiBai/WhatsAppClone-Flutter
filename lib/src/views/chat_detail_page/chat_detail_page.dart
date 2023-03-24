@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:whatsapp_clone/src/services/data_service.dart';
+import 'package:whatsapp_clone/src/services/routing_service.dart';
 import 'package:whatsapp_clone/src/styles.dart';
 import 'package:whatsapp_clone/src/views/chat_detail_page/chat_text_field.dart';
 import 'package:whatsapp_clone/src/views/chat_detail_page/exit_chat_button.dart';
@@ -67,13 +68,13 @@ class _ChatDetailState extends State<ChatDetail> {
     });
   }
 
-  void _sendMessage(int userId, String msg){
+  void _sendMessage(int userId, String msg) {
     DateTime now = new DateTime.now();
 
     setState(() {
       _chatMessages.add({
         "author": "YOU",
-        "content":msg,
+        "content": msg,
         "time": "${now.hour}:${now.minute}"
       });
     });
@@ -118,20 +119,41 @@ class _ChatDetailState extends State<ChatDetail> {
       leading: const SizedBox(),
       leadingWidth: 0,
       backgroundColor: Theme.of(context).colorScheme.primary,
-      title: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
+      title: Column(
         children: [
-          ExitChatButton(
-            contactImg: _contactImg,
-          ),
-          const SizedBox(
-            width: 10,
-          ),
-          Expanded(
-            child: InkWell(
-              child: Text(_contact),
-              onTap: () {},
-            ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              ExitChatButton(
+                contactImg: _contactImg,
+              ),
+              Expanded(
+                child: InkWell(
+                  child: Container(
+                      padding: AppPaddings.mdHor,
+                      height: 55,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            _contact,
+                            style: TextStyle(fontSize: AppTexts.lSize),
+                          ),
+                          const Text(
+                            "En linea",
+                            style: TextStyle(
+                                fontSize: AppTexts.mdSize,
+                                fontWeight: AppTexts.smWeight),
+                          )
+                        ],
+                      )),
+                  onTap: () {
+                    goToRoute(context, "/contactDetail/${widget.chatId}");
+                  },
+                ),
+              ),
+            ],
           ),
         ],
       ),

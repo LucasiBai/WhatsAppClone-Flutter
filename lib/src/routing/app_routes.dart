@@ -6,6 +6,7 @@ import 'package:whatsapp_clone/src/_widgets/contact_image_view.dart';
 import 'package:whatsapp_clone/src/routing/app_router.dart';
 import 'package:whatsapp_clone/src/views/camera_page/camera_page.dart';
 import 'package:whatsapp_clone/src/views/chat_detail_page/chat_detail_page.dart';
+import 'package:whatsapp_clone/src/views/chat_detail_page/contact_detail/contact_detail_view.dart';
 import 'package:whatsapp_clone/src/views/status_page/status_view/status_view.dart';
 
 class Routes {
@@ -41,6 +42,13 @@ class Routes {
           builder: (BuildContext context, GoRouterState state) {
             final userId = state.params["userId"];
             return ContactImageView(userId: userId);
+          },
+        ),
+        GoRoute(
+          path: 'contactDetail/:userId',
+          builder: (BuildContext context, GoRouterState state) {
+            final userId = state.params["userId"];
+            return ContactDetailView(userId: userId);
           },
         ),
       ],
