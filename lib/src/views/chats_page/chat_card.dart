@@ -43,7 +43,7 @@ class ChatCard extends StatelessWidget {
 
     TextStyle textColor = TextStyle(color: onBackground);
 
-    return Stack(children: [
+    return
       ListTile(
         onLongPress: () {
           onLongPress();
@@ -59,7 +59,7 @@ class ChatCard extends StatelessWidget {
             hasIcon: selected,
             size: AppSizes.mdSize,
             imageUrl: imageUrl,
-            onTap: () {},
+            onTap: () {_showContactDialog(context, chatId, imageUrl);},
             icon: AppIcons.checkIcon,
           ),
         ),
@@ -100,22 +100,6 @@ class ChatCard extends StatelessWidget {
             ],
           ),
         ),
-      ),
-      Align(
-        alignment: Alignment.centerLeft,
-        child: GestureDetector(
-          onTap: () {
-            _showContactDialog(context, chatId, imageUrl);
-          },
-          child: Container(
-            margin: const EdgeInsets.symmetric(
-                vertical: AppPaddings.md, horizontal: AppPaddings.l),
-            color: Colors.red.withOpacity(0),
-            width: AppSizes.xxlSize,
-            height: AppSizes.xxlSize,
-          ),
-        ),
-      )
-    ]);
+      );
   }
 }

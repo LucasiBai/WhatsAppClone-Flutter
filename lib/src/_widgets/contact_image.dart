@@ -22,36 +22,41 @@ class ContactImage extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    return Stack(children: [
-      CircleAvatar(
-        backgroundImage: const AssetImage("assets/images/contact_image.webp"),
-        foregroundImage: NetworkImage(imageUrl),
-        radius: size,
-      ),
-      if(hasIcon)
-      Positioned(
-        left: 32,
-        top: 30,
-        child: Container(
-                padding: const EdgeInsets.all(2),
-                decoration: BoxDecoration(
-                  borderRadius: AppBorderRadius.mdAll,
-                  color: theme.colorScheme.background,
-                ),
-                child: Container(
+    return GestureDetector(
+      onTap: (){
+        onTap();
+      },
+      child: Stack(children: [
+        CircleAvatar(
+          backgroundImage: const AssetImage("assets/images/contact_image.webp"),
+          foregroundImage: NetworkImage(imageUrl),
+          radius: size,
+        ),
+        if(hasIcon)
+        Positioned(
+          left: 32,
+          top: 30,
+          child: Container(
+                  padding: const EdgeInsets.all(2),
                   decoration: BoxDecoration(
                     borderRadius: AppBorderRadius.mdAll,
-                    color: theme.colorScheme.secondary,
+                    color: theme.colorScheme.background,
                   ),
-                  child: Icon(
-                    icon,
-                    color: theme.colorScheme.onSecondary,
-                    size: AppIcons.mdSize,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: AppBorderRadius.mdAll,
+                      color: theme.colorScheme.secondary,
+                    ),
+                    child: Icon(
+                      icon,
+                      color: theme.colorScheme.onSecondary,
+                      size: AppIcons.mdSize,
+                    ),
                   ),
-                ),
-              )
-        ,
-      )
-    ]);
+                )
+          ,
+        )
+      ]),
+    );
   }
 }
