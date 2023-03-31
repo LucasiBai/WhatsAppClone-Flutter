@@ -39,73 +39,53 @@ class _ContactDetailViewState extends State<ContactDetailView> {
 
     final TextStyle textStyle = TextStyle(color: colorScheme.onBackground);
 
-    final TextStyle iconStyle =
-        TextStyle(color: colorScheme.secondary, fontWeight: AppTexts.mdWeight);
-
     return Scaffold(
       backgroundColor: colorScheme.background,
       body: SafeArea(
         child: ListView(
           children: [
             SectionCard(
-              child: Column(
+              child: Stack(
                 children: [
-                  ContactImage(
-                      onTap: () {
-                        goToRoute(context, "/contactImage/${widget.userId}");
-                      },
-                      size: AppSizes.xlSize,
-                      imageUrl: _contactData["imageUrl"],
-                      hasIcon: false),
-                  Text(
-                    "${_contactData["contact"]}",
-                    style: textStyle,
+                  Align(
+                    alignment: Alignment.center,
+                    child: Column(
+                    children: [
+                      ContactImage(
+                          onTap: () {
+                            goToRoute(context, "/contactImage/${widget.userId}");
+                          },
+                          size: AppSizes.xlSize,
+                          imageUrl: _contactData["imageUrl"],
+                          hasIcon: false),
+                      Text(
+                        "${_contactData["contact"]}",
+                        style: textStyle,
+                      ),
+                      Text(
+                        "${_contactData["phoneNumber"]}",
+                        style: textStyle.copyWith(
+                            color: colorScheme.onBackground.withOpacity(0.6)),
+                      ),
+                      Text(
+                        "En línea",
+                        style: textStyle.copyWith(
+                            color: colorScheme.onBackground.withOpacity(0.6)),
+                      ),
+                      _getButtons(context)
+                    ],
+                ),
                   ),
-                  Text(
-                    "${_contactData["phoneNumber"]}",
-                    style: textStyle.copyWith(
-                        color: colorScheme.onBackground.withOpacity(0.6)),
-                  ),
-                  Text(
-                    "En línea",
-                    style: textStyle.copyWith(
-                        color: colorScheme.onBackground.withOpacity(0.6)),
-                  ),
-                  Container(
-                    constraints:const BoxConstraints(maxWidth: 200),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        LabelButton(
-                            icon: Icon(
-                              AppIcons.phoneIcon,
-                              color: colorScheme.secondary,
-                            ),
-                            label: Text(
-                              "Llamar",
-                              style: iconStyle,
-                            ),
-                            onTap: () {}),
-                        LabelButton(
-                            icon: Icon(AppIcons.faceTimeIcon,
-                                color: colorScheme.secondary),
-                            label: Text(
-                              "Video",
-                              style: iconStyle,
-                            ),
-                            onTap: () {}),
-                        LabelButton(
-                            icon: Icon(AppIcons.searchIcon,
-                                color: colorScheme.secondary),
-                            label: Text(
-                              "Buscar",
-                              style: iconStyle,
-                            ),
-                            onTap: () {}),
-                      ],
-                    ),
-                  )
-                ],
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    IconButton(onPressed: (){
+                      goBack(context);
+                    }, icon:  Icon(AppIcons.backIcon, color: colorScheme.onBackground,)),
+                    IconButton(onPressed: (){}, icon:  Icon(AppIcons.optionsIcon, color: colorScheme.onBackground,))
+                  ],
+                )
+                ]
               ),
             ),
             const SizedBox(
@@ -132,6 +112,48 @@ class _ContactDetailViewState extends State<ContactDetailView> {
            )
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _getButtons(BuildContext context){
+    final ColorScheme colorScheme = Theme.of(context).colorScheme;
+
+    final TextStyle iconStyle =
+    TextStyle(color: colorScheme.secondary, fontWeight: AppTexts.mdWeight);
+
+    return Container(
+      constraints:const BoxConstraints(maxWidth: 200),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          LabelButton(
+              icon: Icon(
+                AppIcons.phoneIcon,
+                color: colorScheme.secondary,
+              ),
+              label: Text(
+                "Llamar",
+                style: iconStyle,
+              ),
+              onTap: () {}),
+          LabelButton(
+              icon: Icon(AppIcons.faceTimeIcon,
+                  color: colorScheme.secondary),
+              label: Text(
+                "Video",
+                style: iconStyle,
+              ),
+              onTap: () {}),
+          LabelButton(
+              icon: Icon(AppIcons.searchIcon,
+                  color: colorScheme.secondary),
+              label: Text(
+                "Buscar",
+                style: iconStyle,
+              ),
+              onTap: () {}),
+        ],
       ),
     );
   }

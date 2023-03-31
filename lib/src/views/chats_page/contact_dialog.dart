@@ -81,7 +81,9 @@ class ContactDialog extends StatelessWidget {
                           color: colorScheme.secondary,
                         )),
                     CustomIconButton(
-                        onTap: () {},
+                        onTap: () {
+                          goToRoute(context, "/contactDetail/${userId}");
+                        },
                         icon: Icon(
                           AppIcons.infoIcon,
                           color: colorScheme.secondary,
