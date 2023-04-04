@@ -20,20 +20,28 @@ class ChatBubble extends StatelessWidget {
 
     TextStyle textColor = TextStyle(color: onBackground);
 
+    var brightness = MediaQuery.of(context).platformBrightness;
+    bool isDarkMode = brightness == Brightness.dark;
+
     return Container(
-      margin:  const EdgeInsets.symmetric( horizontal :AppPaddings.sm, vertical: AppPaddings.sm),
+      margin: const EdgeInsets.symmetric(
+          horizontal: AppPaddings.sm, vertical: AppPaddings.sm),
       constraints: const BoxConstraints(maxWidth: AppContraints.lSize),
       child: ClipPath(
         clipper: UpperNipMessageClipperTwo(
             ownMessage ? MessageType.send : MessageType.receive,
-          nipHeight:AppPaddings.md,
-          nipWidth: AppPaddings.md
-        ),
+            nipHeight: AppPaddings.md,
+            nipWidth: AppPaddings.md),
         child: Container(
-          color: !ownMessage
-              ? Theme.of(context).colorScheme.background
-              : Theme.of(context).colorScheme.secondary,
-          padding: const EdgeInsets.symmetric(vertical: AppPaddings.md, horizontal: AppPaddings.l),
+          color: !ownMessage && isDarkMode
+              ? Theme.of(context).colorScheme.primary
+              : ownMessage && isDarkMode
+                  ? Theme.of(context).colorScheme.secondary
+                  : !ownMessage
+                      ? Theme.of(context).colorScheme.background
+                      : Colors.green[100],
+          padding: const EdgeInsets.symmetric(
+              vertical: AppPaddings.md, horizontal: AppPaddings.l),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [

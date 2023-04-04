@@ -48,7 +48,7 @@ class CommunityPage extends StatelessWidget {
                       TextSpan(
                           text:
                               "Organiza con facilidad tus grupos relacionados y envía avisos. Ahora tus comunidades, como vecindarios y escuelas, pueden tener su propio espacio.",
-                          style: standardTextStyle.copyWith(color: colorScheme.onBackground.withOpacity(0.7), fontSize: AppTexts.lSize))
+                          style: standardTextStyle.copyWith(color: colorScheme.onBackground.withOpacity(0.7), fontSize: AppTexts.mdSize))
                     ])),
               ),
               const SizedBox(

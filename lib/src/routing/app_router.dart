@@ -17,11 +17,11 @@ class AppRouter extends StatefulWidget {
 
 class _AppRouterState extends State<AppRouter>
     with SingleTickerProviderStateMixin {
-  late TabController controller = TabController(length: 4, vsync: this);
 
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
+      initialIndex: 1,
       length: 4,
       child: Scaffold(
         backgroundColor: Theme.of(context).colorScheme.background,
