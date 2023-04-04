@@ -82,15 +82,20 @@ class _ChatDetailState extends State<ChatDetail> {
 
   @override
   Widget build(BuildContext context) {
+    var brightness = MediaQuery.of(context).platformBrightness;
+    bool isDarkMode = brightness == Brightness.dark;
+
     return Scaffold(
       appBar: _selectedMessages.isNotEmpty
           ? _selectActionsAppBar(context)
           : _contactAppBar(context),
       body: Stack(children: [
         Container(
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage("assets/images/background.jpeg"),
+                  image: AssetImage(isDarkMode
+                      ? "assets/images/background_dark.jpeg"
+                      : "assets/images/background.jpeg"),
                   fit: BoxFit.cover)),
           child: ListView(
             children: [
