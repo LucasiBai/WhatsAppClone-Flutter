@@ -43,7 +43,18 @@ class _ChatDetailState extends State<ChatDetail> {
   }
 
   void _deleteMessages() {
+    for (final message in _selectedMessages) {
+      _deleteMessage(message);
+    }
+
     _removeSelectMessages();
+  }
+
+  void _deleteMessage(message) {
+    setState(() {
+      _chatMessages =
+          _chatMessages.where((item) => item["id"] != message["id"]).toList();
+    });
   }
 
   void _selectMessage(message) {

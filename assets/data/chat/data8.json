@@ -2,35 +2,46 @@
   "id": 3,
   "contact":"Dewey Wilkerson",
   "imageUrl":"https://imageresizer.static9.net.au/U6BsdWkdqh9DKo4gFFwDJHuSVko=/160x0:928x768/400x0/https%3A%2F%2Fprod.static9.net.au%2Ffs%2F733ecaab-640a-441a-98a7-39aa7c73ebe1",
-   "messages":[
+  "messages":[
     {
+      "id": 1,
       "author": "CONTACT",
       "content":"Holaaaaa",
       "time":"15:50"
     },
     {
+      "id": 2,
+
       "author": "YOU",
       "content":"Cómo va?",
       "time":"15:50"
     },
     {
+      "id": 3,
+
       "author": "CONTACT",
       "content":"me siento mareado",
       "time":"15:51"
     },
     {
+      "id": 4,
+
       "author": "CONTACT",
       "content":"quizás porque los de la clase especial tenían fiebre",
       "time":"15:51"
     },
 
-     {
-       "author": "YOU",
-       "content":"Cómo te puedo ayudar Dewey?",
-       "time":"15:52"
-     },
+    {
+      "id": 5,
+
+      "author": "YOU",
+      "content":"Cómo te puedo ayudar Dewey?",
+      "time":"15:52"
+    },
 
     {
+      "id": 6,
+
       "author": "CONTACT",
       "content":"Quiero una galleta",
       "time":"15:53"
@@ -38,4 +49,5 @@
   ],
   "phoneNumber": "+1 113 344 2342",
   "info" : "Jugandoooooooo"
+
 }

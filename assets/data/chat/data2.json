@@ -4,28 +4,37 @@
   "imageUrl":"https://i.pinimg.com/736x/e1/36/11/e136114cd3bdc194a49e6314b6faf636--jim-halpert-beets.jpg",
   "messages":[
     {
+      "id": 1,
       "author": "YOU",
       "content":"Hola Jim",
       "time": "22:20"
     },
     {
+      "id": 2,
+
       "author": "YOU",
       "content":"Dwight me está viendo raro",
       "time": "22:20"
     },
     {
+      "id": 3,
+
       "author": "YOU",
       "content":"y la verdad me incomoda",
       "time": "22:21"
     },
     {
+      "id": 4,
+
       "author": "CONTACT",
       "content":"este Dwight",
       "time": "22:31"
     },
 
     {
-    "author": "CONTACT",
+      "id": 5,
+
+      "author": "CONTACT",
     "content":"Le diré a Michael",
       "time": "22:32"
     }

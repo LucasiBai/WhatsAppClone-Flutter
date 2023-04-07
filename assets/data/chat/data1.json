@@ -4,27 +4,35 @@
   "imageUrl":"https://assets.puzzlefactory.pl/puzzle/387/881/original.jpg",
   "messages":[
     {
+      "id": 1,
       "author": "YOU",
       "content":"Hola Tony",
       "time": "12:32"
     },
     {
+      "id": 2,
       "author": "YOU",
       "content":"Tenés un momento para hablar?",
       "time": "12:32"
     },
     {
+      "id": 3,
+
       "author": "CONTACT",
       "content":"Espera",
       "time": "12:33"
     },
     {
+      "id": 4,
+
       "author": "CONTACT",
       "content":"Pepper me necesita",
       "time": "12:32"
     },
 
     {
+      "id": 5,
+
       "author": "YOU",
       "content":"Dale, después te llamo",
       "time":"13:20"
