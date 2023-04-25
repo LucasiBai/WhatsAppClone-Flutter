@@ -111,7 +111,7 @@ class _ChatDetailState extends State<ChatDetail> {
           child: ListView(
             children: [
               Container(
-                padding: AppPaddings.mdAll,
+                padding: AppPaddings.mdVer,
                 child: Column(
                   children: _renderMessages(context),
                 ),

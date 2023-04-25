@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp_clone/src/_widgets/custom_icon_button.dart';
-import 'package:whatsapp_clone/src/_widgets/custom_icon_button.dart';
-import 'package:whatsapp_clone/src/_widgets/custom_icon_button.dart';
 import 'package:whatsapp_clone/src/services/routing_service.dart';
 import 'package:whatsapp_clone/src/styles.dart';
+
+import 'package:cached_network_image/cached_network_image.dart';
 
 class ContactDialog extends StatelessWidget {
   const ContactDialog({Key? key, this.userId, this.userImg, this.contactName})
@@ -34,10 +34,13 @@ class ContactDialog extends StatelessWidget {
                     child: SizedBox(
                       width: 290,
                       height: 290,
-                      child: Image.network(
-                        userImg,
+                      child:
+                      CachedNetworkImage(
+                        imageUrl: userImg,
+                        placeholder: (context, url) => CircularProgressIndicator(),
+                        errorWidget: (context, url, error) => Icon(Icons.error),
                         fit: BoxFit.cover,
-                      ),
+                      )
                     )),
                 Container(
                   color: Colors.black26,

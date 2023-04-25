@@ -28,8 +28,10 @@ class SelectableChatBubble extends StatelessWidget {
           onTap(message);
         },
         child: Container(
-          width: 500,
-          color: selected? Theme.of(context).colorScheme.tertiary.withOpacity(0.3):Colors.white.withOpacity(0),
+          width: double.infinity,
+          color: selected
+              ? Theme.of(context).colorScheme.tertiary.withOpacity(0.3)
+              : Colors.white.withOpacity(0),
           child: Row(
               mainAxisSize: MainAxisSize.max,
               crossAxisAlignment: CrossAxisAlignment.center,

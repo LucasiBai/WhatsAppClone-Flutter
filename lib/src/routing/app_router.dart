@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:whatsapp_clone/src/services/routing_service.dart';
 import 'package:whatsapp_clone/src/styles.dart';
+import 'package:whatsapp_clone/src/themes.dart';
 
 import 'package:whatsapp_clone/src/views/calls_page/calls_page.dart';
 import 'package:whatsapp_clone/src/views/chats_page/chats_page.dart';
@@ -17,7 +18,6 @@ class AppRouter extends StatefulWidget {
 
 class _AppRouterState extends State<AppRouter>
     with SingleTickerProviderStateMixin {
-
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -38,7 +38,7 @@ class _AppRouterState extends State<AppRouter>
                 onPressed: () {}, icon: const Icon(AppIcons.optionsIcon)),
           ],
           backgroundColor: Theme.of(context).colorScheme.primary,
-          bottom: buildNavBar(),
+          bottom: buildNavBar(context),
         ),
         body: const TabBarView(
           children: [CommunityPage(), ChatsPage(), StatusPage(), CallsPage()],
@@ -47,10 +47,12 @@ class _AppRouterState extends State<AppRouter>
     );
   }
 
-  TabBar buildNavBar() {
-    return const TabBar(
-      labelPadding: EdgeInsets.all(0),
-      tabs: [
+  TabBar buildNavBar(BuildContext context) {
+    final ColorScheme colorScheme = Theme.of(context).colorScheme;
+
+    return TabBar(
+      labelPadding: const EdgeInsets.all(0),
+      tabs: const [
         Tab(
           icon: Icon(Icons.people),
         ),
@@ -64,7 +66,11 @@ class _AppRouterState extends State<AppRouter>
           text: "LLAMADAS",
         ),
       ],
-      indicatorColor: Colors.white,
+      labelColor:
+          AppThemes.isDarkMode(context) ? colorScheme.secondary : Colors.white,
+      unselectedLabelColor: Colors.white.withOpacity(0.7),
+      indicatorColor:
+          AppThemes.isDarkMode(context) ? colorScheme.secondary : Colors.white,
       indicatorWeight: 3,
     );
   }

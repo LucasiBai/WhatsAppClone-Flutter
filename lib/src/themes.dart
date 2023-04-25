@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
 class AppThemes {
+  static bool isDarkMode(BuildContext context){
+    return MediaQuery.of(context).platformBrightness== Brightness.dark;
+  }
+
   static ThemeData lightTheme = ThemeData(
       colorScheme: ColorScheme.fromSeed(
           seedColor: Color(0xff00a884),
@@ -17,5 +21,5 @@ class AppThemes {
           secondary: Color(0xff1ebea5),
           background: Color(0xff101e29),
           onBackground: Colors.white,
-          tertiary: Colors.blue));
+          tertiary: Colors.green));
 }
