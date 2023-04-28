@@ -37,7 +37,7 @@ class ContactDialog extends StatelessWidget {
                       child:
                       CachedNetworkImage(
                         imageUrl: userImg,
-                        placeholder: (context, url) => CircularProgressIndicator(),
+                        placeholder: (context, url) =>Image.asset("assets/images/contact_image.webp"),
                         errorWidget: (context, url, error) => Icon(Icons.error),
                         fit: BoxFit.cover,
                       )

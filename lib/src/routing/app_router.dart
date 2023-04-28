@@ -52,18 +52,28 @@ class _AppRouterState extends State<AppRouter>
 
     return TabBar(
       labelPadding: const EdgeInsets.all(0),
+      isScrollable: true,
       tabs: const [
         Tab(
-          icon: Icon(Icons.people),
+          icon: Padding(
+            padding: AppPaddings.mdHor,
+            child: Icon(Icons.people),
+          ),
         ),
-        Tab(
-          text: "CHATS",
+        Expanded(
+          child: Tab(
+            text: "Chats",
+          ),
         ),
-        Tab(
-          text: "ESTADOS",
+        Expanded(
+          child: Tab(
+            text: "Estados",
+          ),
         ),
-        Tab(
-          text: "LLAMADAS",
+        Expanded(
+          child: Tab(
+            text: "Llamadas",
+          ),
         ),
       ],
       labelColor:
