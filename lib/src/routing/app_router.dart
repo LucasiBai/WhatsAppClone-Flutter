@@ -38,7 +38,11 @@ class _AppRouterState extends State<AppRouter>
                 onPressed: () {}, icon: const Icon(AppIcons.optionsIcon)),
           ],
           backgroundColor: Theme.of(context).colorScheme.primary,
-          bottom: buildNavBar(context),
+          bottom: PreferredSize(
+              preferredSize: const Size.fromHeight(kToolbarHeight),
+              child: SizedBox(
+                  width: MediaQuery.of(context).size.width,
+                  child: Expanded(child: buildNavBar(context)))),
         ),
         body: const TabBarView(
           children: [CommunityPage(), ChatsPage(), StatusPage(), CallsPage()],
@@ -49,28 +53,32 @@ class _AppRouterState extends State<AppRouter>
 
   TabBar buildNavBar(BuildContext context) {
     final ColorScheme colorScheme = Theme.of(context).colorScheme;
+    final double tabWidth = (MediaQuery.of(context).size.width - 20) / 3;
+    
 
     return TabBar(
-      labelPadding: const EdgeInsets.all(0),
-      isScrollable: true,
-      tabs: const [
-        Tab(
-          icon: Padding(
-            padding: AppPaddings.mdHor,
+
+      tabs:  [
+        const SizedBox(
+         width: 20,
+          child: Tab(
             child: Icon(Icons.people),
           ),
         ),
-        Expanded(
+        SizedBox(
+          width: tabWidth,
           child: Tab(
             text: "Chats",
           ),
         ),
-        Expanded(
+        SizedBox(
+         width: tabWidth,
           child: Tab(
             text: "Estados",
           ),
         ),
-        Expanded(
+        SizedBox(
+          width: tabWidth,
           child: Tab(
             text: "Llamadas",
           ),
